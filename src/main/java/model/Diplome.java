@@ -11,7 +11,7 @@ public class Diplome {
     private String date;
     private String institut;
 
-    @XmlElement
+    @XmlElement(name = "texte", namespace = "http://univ.fr/cv24")
     public String getTexte() {
         return texte;
     }
@@ -20,7 +20,7 @@ public class Diplome {
         this.texte = texte;
     }
 
-    @XmlElement
+    @XmlElement(name = "date", namespace = "http://univ.fr/cv24")
     public String getDate() {
         return date;
     }
@@ -29,7 +29,7 @@ public class Diplome {
         this.date = date;
     }
 
-    @XmlElement
+    @XmlElement(name = "institut", namespace = "http://univ.fr/cv24")
     public String getInstitut() {
         return institut;
     }

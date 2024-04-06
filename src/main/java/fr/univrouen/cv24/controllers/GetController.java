@@ -60,13 +60,6 @@ public @ResponseBody TestCV getXML() {
         InputStream inputStream = getClass().getClassLoader().getResourceAsStream("smallCV.xml");
 
         TestCV cv = (TestCV) unmarshaller.unmarshal(inputStream);
-     // Récupérer l'objectif du CV
-        Objectif objectif = cv.getObjectif();
-        String contenuObjectif = objectif.getContenu();
-        String statutObjectif = objectif.getStatut();
-
-        System.out.println("Contenu de l'objectif : " + contenuObjectif);
-        System.out.println("Statut de l'objectif : " + statutObjectif);
 
         return cv;
     } catch (JAXBException e) {

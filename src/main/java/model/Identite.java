@@ -10,8 +10,8 @@ public class Identite {
     private String prenom;
     private String tel;
     private String mel;
-
-    @XmlElement
+    
+    @XmlElement(name = "genre", namespace = "http://univ.fr/cv24")
     public String getGenre() {
         return genre;
     }
@@ -20,7 +20,7 @@ public class Identite {
         this.genre = genre;
     }
 
-    @XmlElement
+    @XmlElement(name = "nom", namespace = "http://univ.fr/cv24")
     public String getNom() {
         return nom;
     }
@@ -29,7 +29,7 @@ public class Identite {
         this.nom = nom;
     }
 
-    @XmlElement
+    @XmlElement(name = "prenom", namespace = "http://univ.fr/cv24")
     public String getPrenom() {
         return prenom;
     }
@@ -38,7 +38,7 @@ public class Identite {
         this.prenom = prenom;
     }
 
-    @XmlElement
+    @XmlElement(name = "tel", namespace = "http://univ.fr/cv24")
     public String getTel() {
         return tel;
     }
@@ -47,7 +47,7 @@ public class Identite {
         this.tel = tel;
     }
 
-    @XmlElement
+    @XmlElement(name = "mel", namespace = "http://univ.fr/cv24")
     public String getMel() {
         return mel;
     }

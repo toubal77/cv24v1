@@ -1,14 +1,14 @@
 package model;
 
-import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(namespace = "http://univ.fr/cv24")
-public class Divers {
+public class Autre {
     private String titre;
     private String comment;
 
-    @XmlElement(name = "titre", namespace = "http://univ.fr/cv24")
+    @XmlAttribute
     public String getTitre() {
         return titre;
     }
@@ -17,7 +17,7 @@ public class Divers {
         this.titre = titre;
     }
 
-    @XmlElement(name = "comment", namespace = "http://univ.fr/cv24")
+    @XmlAttribute
     public String getComment() {
         return comment;
     }

@@ -9,7 +9,7 @@ public class Detail {
     private String datefin;
     private String titre;
 
-    @XmlElement
+    @XmlElement(name = "datedeb", namespace = "http://univ.fr/cv24")
     public String getDatedeb() {
         return datedeb;
     }
@@ -18,7 +18,7 @@ public class Detail {
         this.datedeb = datedeb;
     }
 
-    @XmlElement
+    @XmlElement(name = "datefin", namespace = "http://univ.fr/cv24")
     public String getDatefin() {
         return datefin;
     }
@@ -27,7 +27,7 @@ public class Detail {
         this.datefin = datefin;
     }
 
-    @XmlElement
+    @XmlElement(name = "titre", namespace = "http://univ.fr/cv24")
     public String getTitre() {
         return titre;
     }
