@@ -21,7 +21,6 @@ public class TestCV {
     private Identite identite;
     private Objectif objectif;
     private Prof prof;
-    private List<Professionnel> professionnels;
     private Competences competences;
     private Divers divers;
 
@@ -50,16 +49,6 @@ public class TestCV {
 
     public void setProf(Prof objectif) {
         this.prof = objectif;
-    }
-
-    @XmlElementWrapper(name = "professionnels", namespace = "http://univ.fr/cv24")
-    @XmlElement(name = "professionnel")
-    public List<Professionnel> getProfessionnels() {
-        return professionnels;
-    }
-
-    public void setProfessionnels(List<Professionnel> professionnels) {
-        this.professionnels = professionnels;
     }
 
     @XmlElement(name = "competences", namespace = "http://univ.fr/cv24")
