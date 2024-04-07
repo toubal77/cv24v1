@@ -10,7 +10,7 @@ public class Lv {
     private String nivs;
     private String nivi;
 
-    @XmlAttribute
+    @XmlAttribute(name = "lang")
     public String getLang() {
         return lang;
     }
@@ -19,7 +19,7 @@ public class Lv {
         this.lang = lang;
     }
 
-    @XmlAttribute
+    @XmlAttribute(name = "cert")
     public String getCert() {
         return cert;
     }
@@ -28,7 +28,7 @@ public class Lv {
         this.cert = cert;
     }
 
-    @XmlAttribute
+    @XmlAttribute(name = "nivs")
     public String getNivs() {
         return nivs;
     }
@@ -37,7 +37,7 @@ public class Lv {
         this.nivs = nivs;
     }
 
-    @XmlAttribute
+    @XmlAttribute(name = "nivi")
     public String getNivi() {
         return nivi;
     }

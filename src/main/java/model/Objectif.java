@@ -2,13 +2,14 @@ package model;
 
 import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlValue;
 
 @XmlRootElement(namespace = "http://univ.fr/cv24")
 public class Objectif {
     private String contenu;
     private String statut;
 
-
+    @XmlValue
     public String getContenu() {
         return contenu;
     }

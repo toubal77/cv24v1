@@ -9,7 +9,7 @@ public class Competences {
     private List<Diplome> diplomes;
     private List<Certif> certifs;
 
-    @XmlElement(name = "diplomes", namespace = "http://univ.fr/cv24")
+    @XmlElement(name = "diplome", namespace = "http://univ.fr/cv24")
     public List<Diplome> getDiplomes() {
         return diplomes;
     }
@@ -18,7 +18,7 @@ public class Competences {
         this.diplomes = diplomes;
     }
 
-    @XmlElement(name = "certifs", namespace = "http://univ.fr/cv24")
+    @XmlElement(name = "certif", namespace = "http://univ.fr/cv24")
     public List<Certif> getCertifs() {
         return certifs;
     }

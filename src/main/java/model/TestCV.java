@@ -20,9 +20,10 @@ public class TestCV {
     private Integer id;
     private Identite identite;
     private Objectif objectif;
+    private Prof prof;
     private List<Professionnel> professionnels;
     private Competences competences;
-    private List<Divers> divers;
+    private Divers divers;
 
     @XmlElement(name = "identite", namespace = "http://univ.fr/cv24")
     public Identite getIdentite() {
@@ -40,6 +41,15 @@ public class TestCV {
 
     public void setObjectif(Objectif objectif) {
         this.objectif = objectif;
+    }
+    
+    @XmlElement(name = "prof", namespace = "http://univ.fr/cv24")
+    public Prof getProf() {
+        return prof;
+    }
+
+    public void setProf(Prof objectif) {
+        this.prof = objectif;
     }
 
     @XmlElementWrapper(name = "professionnels", namespace = "http://univ.fr/cv24")
@@ -61,25 +71,15 @@ public class TestCV {
         this.competences = competences;
     }
 
-    @XmlElementWrapper(name = "divers", namespace = "http://univ.fr/cv24")
-    @XmlElement(name = "divers")
-    public List<Divers> getDivers() {
+    @XmlElement(name = "divers", namespace = "http://univ.fr/cv24")
+    public Divers getDivers() {
         return divers;
     }
 
-    public void setDivers(List<Divers> divers) {
+    public void setDivers(Divers divers) {
         this.divers = divers;
     }
 
-    public TestCV(Identite identite, Objectif objectif, List<Professionnel> professionnels, Competences competences, List<Divers> divers) {
-        super();
-        this.id = compteur++;
-        this.identite = identite;
-        this.objectif = objectif;
-        this.professionnels = professionnels;
-        this.competences = competences;
-        this.divers = divers;
-    }
 
     public TestCV() {
     }

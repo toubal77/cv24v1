@@ -1,6 +1,5 @@
 package model;
 
-import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 
@@ -9,7 +8,7 @@ public class Certif {
     private String nom;
     private String date;
 
-    @XmlElement(name = "nom", namespace = "http://univ.fr/cv24")
+    @XmlElement(name = "titre", namespace = "http://univ.fr/cv24")
     public String getNom() {
         return nom;
     }
@@ -18,7 +17,7 @@ public class Certif {
         this.nom = nom;
     }
 
-    @XmlElement(name = "date", namespace = "http://univ.fr/cv24")
+    @XmlElement(name = "datedeb", namespace = "http://univ.fr/cv24")
     public String getDate() {
         return date;
     }
