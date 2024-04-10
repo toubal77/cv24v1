@@ -39,4 +39,28 @@ public class IndexController {
 	        
 	        return htmlPage.toString();
 	    }
+	 
+	 @GetMapping("/help")
+	    public String help() {
+	        StringBuilder htmlBuilder = new StringBuilder();
+	        htmlBuilder.append("<html><head><title>Aide</title></head><body>");
+	        htmlBuilder.append("<h1>Aide</h1>");
+
+	        htmlBuilder.append("<ul>");
+	        htmlBuilder.append("<li><b>URL:</b> /operation1</li>");
+	        htmlBuilder.append("<li><b>Méthode:</b> GET</li>");
+	        htmlBuilder.append("<li><b>Résumé:</b> Description de l'opération 1</li>");
+	        htmlBuilder.append("</ul>");
+
+	        htmlBuilder.append("<ul>");
+	        htmlBuilder.append("<li><b>URL:</b> /operation2</li>");
+	        htmlBuilder.append("<li><b>Méthode:</b> POST</li>");
+	        htmlBuilder.append("<li><b>Résumé:</b> Description de l'opération 2</li>");
+	        htmlBuilder.append("</ul>");
+
+
+	        htmlBuilder.append("</body></html>");
+
+	        return htmlBuilder.toString();
+	    }
 }
