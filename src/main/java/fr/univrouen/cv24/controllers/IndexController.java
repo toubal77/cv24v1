@@ -11,13 +11,13 @@ public class IndexController {
         return "index";
     }
 
- /*   @GetMapping("/help")
-    public String help(Model model) {
-        return "index";
+    @GetMapping(value = "/help")
+    public String help() {
+        return "help";
     }
-
-    @GetMapping("/error")
+ 
+    @GetMapping(value = "/error")
     public String error() {
-        return "index";
-    } */
+        return "error";
+    }
 }
