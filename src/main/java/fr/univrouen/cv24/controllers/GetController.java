@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import fr.univrouen.cv24.model.TestCV;
+import fr.univrouen.cv24.util.Fichier;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Unmarshaller;
-import model.TestCV;
-import util.Fichier;
 
 @RestController
 public class GetController {
