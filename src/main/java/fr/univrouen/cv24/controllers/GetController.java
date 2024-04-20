@@ -1,13 +1,6 @@
 package fr.univrouen.cv24.controllers;
 
-import java.io.File;
-import java.io.IOException;
 import java.io.InputStream;
-
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.DefaultResourceLoader;
-import org.springframework.core.io.Resource;
-//import java.awt.PageAttributes.MediaType;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Unmarshaller;
-import model.Objectif;
 import model.TestCV;
 import util.Fichier;
 

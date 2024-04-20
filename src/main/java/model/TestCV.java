@@ -1,15 +1,7 @@
 package model;
 
-import java.io.Serializable;
-import java.util.List;
-import java.util.ArrayList;
-
-import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlElementWrapper;
 import jakarta.xml.bind.annotation.XmlRootElement;
-
-import jakarta.xml.bind.annotation.*;
 
 @XmlRootElement(name = "cv24", namespace = "http://univ.fr/cv24")
 public class TestCV {
