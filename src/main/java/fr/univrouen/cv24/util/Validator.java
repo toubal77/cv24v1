@@ -13,13 +13,13 @@ import fr.univrouen.cv24.controllers.PostController;
 
 public class Validator {
 
-    public boolean validate(String stb20) throws DisplayMessageException {
+    public boolean validate(String cv24) throws DisplayMessageException {
         try {
         	
         	SchemaFactory factory = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
             Schema schema = factory.newSchema(PostController.class.getResource("/xsd/cv24.xsd"));
             javax.xml.validation.Validator validator = schema.newValidator();
-            validator.validate(new StreamSource(new StringReader(stb20)));
+            validator.validate(new StreamSource(new StringReader(cv24)));
         
             return true;
 

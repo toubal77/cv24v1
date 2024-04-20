@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -17,7 +18,7 @@ import jakarta.xml.bind.annotation.XmlType;
 @Entity
 @Table(name = "CV24")
 @XmlRootElement(name = "cv24", namespace = "http://univ.fr/cv24")
-@XmlType(propOrder={"identite", "objectif", "prof", "competences", "divers"}) 
+@XmlType(propOrder={"cv24s","identite", "objectif", "prof", "competences", "divers"}) 
 @XmlAccessorType(XmlAccessType.FIELD)
 public class CV24type {
 
@@ -43,6 +44,9 @@ public class CV24type {
 
     @OneToOne(cascade = CascadeType.ALL)
     private DiversType divers;
+
+    @ManyToOne
+	private ListCV24 cv24s;
 
     public IdentiteType getIdentite() {
         return identite;

@@ -15,7 +15,7 @@ public class DeleteController {
 	private CVRepositorie cvRepositorie;
 	
 	@DeleteMapping("/cv24/delete")
-	public String deleteArtSTB(@RequestParam(value = "id")  int id) {
+	public String deleteCV24(@RequestParam(value = "id")  int id) {
 		
 		if(cvRepositorie.existsById((long) id)) {
 			cvRepositorie.deleteById((long) id);
