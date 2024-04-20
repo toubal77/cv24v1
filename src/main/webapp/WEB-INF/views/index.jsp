@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Page d'accueil</title>
-    <link href="/resources/css/style_accueil.css" rel="stylesheet">
+    <link href="/resources/css/styles_accueil.css" rel="stylesheet">
 </head>
 <body>
     <div class="container">
@@ -16,7 +16,7 @@
         <ul>
             <li>TOUBAL Zine-Eddine</li>
         </ul>
-        <img src="/resources/logo_univ.png" alt="Logo de l’Université de Rouen">
+        <img src="/resources/img/logo_univ.png" alt="Logo de l’Université de Rouen">
     </div>
 
     <footer>

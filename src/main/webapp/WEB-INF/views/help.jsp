@@ -8,6 +8,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Help</title>
+    <link href="/resources/css/styles_help.css" rel="stylesheet">
 </head>
 <body>
 <div class="intro">
