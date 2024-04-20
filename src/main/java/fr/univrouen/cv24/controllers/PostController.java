@@ -46,7 +46,7 @@ public class PostController {
 	        return "<result><response>Message reçu : </response>" + flux + "</result>";
 	    }
 
-	@RequestMapping(value = "/insert", method = RequestMethod.POST, consumes = "application/xml", produces = MediaType.APPLICATION_XML_VALUE)
+	@RequestMapping(value = "/cv24/insert", method = RequestMethod.POST, consumes = "application/xml", produces = MediaType.APPLICATION_XML_VALUE)
 	public String insert(@RequestBody String cv24) throws DisplayMessageException {
 	
 	 Validator cv24Validator = new Validator();
