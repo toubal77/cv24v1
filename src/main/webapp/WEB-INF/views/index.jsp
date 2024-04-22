@@ -15,6 +15,7 @@
         <p>Nom & Prénom de chaque membre de l'équipe :</p>
         <ul>
             <li>TOUBAL Zine-Eddine</li>
+            <li>BEN AHMED Yacine</li>
         </ul>
         <img src="/resources/img/logo_univ.png" alt="Logo de l’Université de Rouen">
     </div>
