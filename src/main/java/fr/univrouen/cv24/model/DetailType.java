@@ -6,6 +6,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -18,7 +19,7 @@ import jakarta.xml.bind.annotation.XmlType;
 @Entity
 @Table(name = "Detail")
 @XmlRootElement(name = "detail")
-@XmlType(propOrder={"titreDetail", "datedebDetail", "datefinDetail"}) 
+@XmlType(propOrder={"prof", "titre", "datedeb", "datefin"}) 
 @XmlAccessorType(XmlAccessType.FIELD)
 public class DetailType {
 
@@ -27,15 +28,18 @@ public class DetailType {
     @XmlTransient
     private Long id;
     
-    @XmlElement(required = true)
+    @ManyToOne
+    @XmlTransient
+    private ProfType prof;
+
+    @XmlElement(name="titre",required = true)
+    @Column(name = "titre")
     private String titreDetail;
 
-    @XmlSchemaType(name = "date")
     @XmlElement(name="datedeb",required = true)
     @Column(name = "datedeb")
     private String datedebDetail;
 
-    @XmlSchemaType(name = "date")
     @Column(name = "datefin")
     @XmlElement(name="datefin",required = true)
     private String datefinDetail;
@@ -62,6 +66,14 @@ public class DetailType {
 
     public void setTitreDetail(String value) {
         this.titreDetail = value;
+    }
+
+    public ProfType getProf() {
+        return prof;
+    }
+
+    public void setProf(ProfType prof) {
+        this.prof = prof;
     }
 
     public Long getId() {

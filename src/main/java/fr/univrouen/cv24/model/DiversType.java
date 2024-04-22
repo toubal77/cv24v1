@@ -20,7 +20,7 @@ import jakarta.xml.bind.annotation.XmlType;
 @Entity
 @Table(name = "Divers")
 @XmlRootElement(name = "divers")
-@XmlType(propOrder={"languesDivers", "autresDivers"})
+@XmlType(propOrder={"lv", "autre"})
 @XmlAccessorType(XmlAccessType.FIELD)
 public class DiversType {
 
@@ -30,33 +30,33 @@ public class DiversType {
     private Long id;
 
     @XmlElement(name="lv",required = true)
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<LvType> languesDivers;
+    @OneToMany(mappedBy = "divers", cascade = CascadeType.ALL)
+    private List<LvType> lv;
 
     @XmlElement(name="autre",required = true)
     @OneToOne(cascade = CascadeType.ALL)
-    private AutreType autresDivers; 
+    private AutreType autre; 
 
     public List<LvType> getLanguesDivers() {
-        if (languesDivers == null) {
-            languesDivers = new ArrayList<LvType>();
+        if (lv == null) {
+            lv = new ArrayList<LvType>();
         }
-        return this.languesDivers;
+        return this.lv;
     }
 
 
     public AutreType getAutresDivers() {
-        return this.autresDivers;
+        return this.autre;
     }
 
     public void setAutresDivers(AutreType autres) {
     
-         this.autresDivers = autres;
+         this.autre = autres;
     }
 
     public void setLanguesDivers(List<LvType> lv) {
     
-        this.languesDivers = lv;
+        this.lv = lv;
    }
 
     public Long getId() {

@@ -25,6 +25,7 @@ public abstract class DiversMapper {
         Lv lv = LvMapper.INSTANCE.toModel(lvType);
         lvList.add(lv);
     }
+    divers.setAutre(AutreMapper.INSTANCE.toModel(diversEntity.getAutresDivers()));
     divers.setLv(lvList);
     return divers;
 }

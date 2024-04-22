@@ -5,16 +5,20 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlAttribute;
+import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlTransient;
 import jakarta.xml.bind.annotation.XmlType;
 import jakarta.xml.bind.annotation.XmlAccessType;
 
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "autreType")
+@XmlType(propOrder={"titre", "comment"})
 @Entity
+@XmlRootElement(name = "autre")
 public class AutreType {
 
     @Id
     @GeneratedValue
+    @XmlTransient
     private Long id;
 
     @XmlAttribute(name = "titre", required = true)

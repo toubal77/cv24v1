@@ -12,6 +12,7 @@ import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
 import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlElementWrapper;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlTransient;
 import jakarta.xml.bind.annotation.XmlType;
@@ -19,29 +20,25 @@ import jakarta.xml.bind.annotation.XmlType;
 @Entity
 @Table(name = "Prof")
 @XmlRootElement(name = "prof")
-@XmlType(propOrder={"detailProf"})
+@XmlType(propOrder={"detail"})
 @XmlAccessorType(XmlAccessType.FIELD)
 public class ProfType {
-
 
     @Id
     @GeneratedValue
     @XmlTransient
     private Long id;
-
-    @XmlElement(name="detail",required = true)
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<DetailType> detailProf;
+    @XmlElementWrapper
+    @XmlElement(name = "detail")
+    @OneToMany(mappedBy = "prof", cascade = CascadeType.ALL)
+    private List<DetailType> detail;
 
     public List<DetailType> getDetail() {
-        if (detailProf == null) {
-            detailProf = new ArrayList<DetailType>();
-        }
-        return this.detailProf;
+        return this.detail;
     }
 
-    public void setDetail(List<DetailType> details) {
-       this.detailProf = details;
+    public void setDetail(List<DetailType> detail) {
+       this.detail = detail;
     }
 
     public Long getId() {

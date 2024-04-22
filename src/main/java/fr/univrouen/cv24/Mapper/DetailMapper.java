@@ -16,8 +16,9 @@ public abstract class DetailMapper {
             public Detail toModel(DetailType detailEntity) {
                 Detail detail = new Detail();
                 detail.setDatedeb(detailEntity.getDatedebDetail());
-                detail.setDatefin(detailEntity.getDatedebDetail());
+                detail.setDatefin(detailEntity.getDatefinDetail());
                 detail.setTitre(detailEntity.getTitreDetail());
+                
                 return detail;
             }
         

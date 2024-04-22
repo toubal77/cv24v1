@@ -24,7 +24,7 @@ public abstract class AutreMapper {
     public AutreType toEntity(Autre autre) {
         AutreType autreEntity = new AutreType();
         autreEntity.setAutreComment(autre.getComment());
-        autreEntity.setAutreComment(autre.getTitre());
+        autreEntity.setAutreTitre(autre.getTitre());
         return autreEntity;
     }
     public abstract List<Autre> toModels(List<AutreType> autreEntities);

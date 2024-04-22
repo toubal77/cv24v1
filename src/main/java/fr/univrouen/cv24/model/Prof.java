@@ -16,4 +16,8 @@ public class Prof {
     public void setDetails(List<Detail> details) {
         this.details = details;
     }
+
+    public void setDetails(Detail detail) {
+        this.details.add(detail);
+    }
 }
