@@ -6,27 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
-import fr.univrouen.cv24.model.AutreType;
-import fr.univrouen.cv24.model.CV24;
-import fr.univrouen.cv24.model.CV24type;
-import fr.univrouen.cv24.model.CertifType;
-import fr.univrouen.cv24.model.CompetencesType;
-import fr.univrouen.cv24.model.CrtType;
-import fr.univrouen.cv24.model.DetailType;
-import fr.univrouen.cv24.model.DiplomeType;
-import fr.univrouen.cv24.model.DiversType;
-import fr.univrouen.cv24.model.GenreType;
-import fr.univrouen.cv24.model.IdentiteType;
-import fr.univrouen.cv24.model.LvType;
-import fr.univrouen.cv24.model.NivsType;
-import fr.univrouen.cv24.model.ObjectifType;
-import fr.univrouen.cv24.model.ProfType;
-import fr.univrouen.cv24.model.StatutType;
 import fr.univrouen.cv24.model.TestCV;
 import fr.univrouen.cv24.repositorie.CVRepositorie;
 import fr.univrouen.cv24.services.CV2Service;
-import fr.univrouen.cv24.util.DisplayMessageException;
-import fr.univrouen.cv24.util.Validator;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
 
@@ -34,7 +16,7 @@ import javax.xml.bind.Unmarshaller;
 public class PostController {
 
 	@Autowired
-	private CV2Service stbService;
+	private CV2Service cv24Service;
 	@Autowired
 	private CVRepositorie cvRepositorie;
 	
@@ -47,7 +29,7 @@ public class PostController {
 	    }
 		@RequestMapping(value = "/cv24/insert", method = RequestMethod.POST, consumes = "application/xml", produces = MediaType.APPLICATION_XML_VALUE)
 		public String insert(@RequestBody TestCV cv24) {
-			return stbService.insert(cv24);
+			return cv24Service.insert(cv24);
 		}
 // 	@RequestMapping(value = "/cv24/insert", method = RequestMethod.POST, consumes = "application/xml", produces = MediaType.APPLICATION_XML_VALUE)
 // 	public String insert(@RequestBody String cv24) throws DisplayMessageException {

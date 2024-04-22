@@ -7,11 +7,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import fr.univrouen.cv24.Mapper.CV24Mapper;
-import fr.univrouen.cv24.model.CV24;
 import fr.univrouen.cv24.model.CV24type;
 import fr.univrouen.cv24.model.TestCV;
 import fr.univrouen.cv24.repositorie.CVRepositorie;
-import jakarta.persistence.spi.TransformerException;
 
 @Service
 public class CV2Service {
@@ -19,13 +17,13 @@ public class CV2Service {
       
     
         @Autowired
-        private CVRepositorie stbRepository;
+        private CVRepositorie cvRepositorie;
         
        
     
     
         public Boolean searchCV24(TestCV cv24) {
-            List<CV24type> cvList = stbRepository.findAll();
+            List<CV24type> cvList = cvRepositorie.findAll();
 
             for (CV24type cv : cvList) {
                 if (cv.getIdentite().getGenre().equals(cv24.getIdentite().getGenre()) &&
@@ -50,7 +48,7 @@ public class CV2Service {
                         "<status>"+ HttpStatus.CONFLICT +"</status>" + 
                     "</message>";
                      }
-                    CV24type stbEntity = stbRepository.save(CV24Mapper.INSTANCE.toEntity(cv24));
+                 cvRepositorie.save(CV24Mapper.INSTANCE.toEntity(cv24));
                     return  "<message>" + 
                     								
                      									"<status>"+ HttpStatus.OK +"</status>" + 

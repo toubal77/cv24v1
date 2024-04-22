@@ -1,7 +1,5 @@
 package fr.univrouen.cv24.model;
 
-import java.util.List;
-
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 
