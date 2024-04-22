@@ -31,27 +31,28 @@ public class DetailType {
     private String titreDetail;
 
     @XmlSchemaType(name = "date")
-    @XmlElement(required = true)
+    @XmlElement(name="datedeb",required = true)
     @Column(name = "datedeb")
-    private LocalDate datedebDetail;
+    private String datedebDetail;
 
     @XmlSchemaType(name = "date")
     @Column(name = "datefin")
-    private LocalDate datefinDetail;
+    @XmlElement(name="datefin",required = true)
+    private String datefinDetail;
 
-    public LocalDate getDatedebDetail() {
+    public String getDatedebDetail() {
         return datedebDetail;
     }
 
-    public void setDatedebDetail(LocalDate value) {
+    public void setDatedebDetail(String value) {
         this.datedebDetail = value;
     }
 
-    public LocalDate getDatefinDetail() {
+    public String getDatefinDetail() {
         return datefinDetail;
     }
 
-    public void setDatefinDetail(LocalDate value) {
+    public void setDatefinDetail(String value) {
         this.datefinDetail = value;
     }
 

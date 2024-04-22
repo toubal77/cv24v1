@@ -8,6 +8,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -28,12 +29,13 @@ public class DiversType {
     @XmlTransient
     private Long id;
 
-    @XmlElement(required = true)
+    @XmlElement(name="lv",required = true)
     @OneToMany(cascade = CascadeType.ALL)
     private List<LvType> languesDivers;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<AutreType> autresDivers; 
+    @XmlElement(name="autre",required = true)
+    @OneToOne(cascade = CascadeType.ALL)
+    private AutreType autresDivers; 
 
     public List<LvType> getLanguesDivers() {
         if (languesDivers == null) {
@@ -43,12 +45,19 @@ public class DiversType {
     }
 
 
-    public List<AutreType> getAutresDivers() {
-        if (autresDivers == null) {
-            autresDivers = new ArrayList<AutreType>();
-        }
+    public AutreType getAutresDivers() {
         return this.autresDivers;
     }
+
+    public void setAutresDivers(AutreType autres) {
+    
+         this.autresDivers = autres;
+    }
+
+    public void setLanguesDivers(List<LvType> lv) {
+    
+        this.languesDivers = lv;
+   }
 
     public Long getId() {
         return id;

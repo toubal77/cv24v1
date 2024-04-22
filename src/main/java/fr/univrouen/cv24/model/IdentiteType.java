@@ -26,20 +26,22 @@ public class IdentiteType {
 
     @XmlElement(required = true)
     @XmlSchemaType(name = "string")
-    private GenreType genre;
+    private String genre;
     @XmlElement(required = true)
     private String nom;
     @XmlElement(required = true)
     private String prenom;
+    @XmlElement(required = true)
     private String tel;
+    @XmlElement(required = true)
     private String mel;
 
-    public GenreType getGenre() {
+    public String getGenre() {
         return genre;
     }
 
 
-    public void setGenre(GenreType value) {
+    public void setGenre(String value) {
         this.genre = value;
     }
 

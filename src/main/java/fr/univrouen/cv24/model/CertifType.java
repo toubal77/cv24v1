@@ -33,26 +33,26 @@ public class CertifType {
     @XmlSchemaType(name = "date")
     @XmlElement(required = true)
     @Column(name = "datedeb")
-    private LocalDate certifDatedeb; 
+    private String certifDatedeb; 
 
     @XmlSchemaType(name = "date")
     @XmlElement(required = true)
     @Column(name = "datefin")
-    private LocalDate certifDatefin; 
+    private String certifDatefin; 
 
-    public LocalDate getCertifDatedeb() { 
+    public String getCertifDatedeb() { 
         return certifDatedeb;
     }
 
-    public void setCertifDatedeb(LocalDate value) { 
+    public void setCertifDatedeb(String value) { 
         this.certifDatedeb = value;
     }
 
-    public LocalDate getCertifDatefin() { 
+    public String getCertifDatefin() { 
         return certifDatefin;
     }
 
-    public void setCertifDatefin(LocalDate value) { 
+    public void setCertifDatefin(String value) { 
         this.certifDatefin = value;
     }
 

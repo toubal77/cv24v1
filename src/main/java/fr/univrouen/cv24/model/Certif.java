@@ -7,6 +7,7 @@ import jakarta.xml.bind.annotation.XmlRootElement;
 public class Certif {
     private String nom;
     private String date;
+    private String dateFin;
 
     @XmlElement(name = "titre", namespace = "http://univ.fr/cv24")
     public String getNom() {
@@ -24,5 +25,14 @@ public class Certif {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    @XmlElement(name = "datefin", namespace = "http://univ.fr/cv24")
+    public String getDateFin() {
+        return dateFin;
+    }
+
+    public void setDateFin(String date) {
+        this.dateFin = date;
     }
 }

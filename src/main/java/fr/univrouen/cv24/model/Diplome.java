@@ -1,5 +1,6 @@
 package fr.univrouen.cv24.model;
 
+import jakarta.xml.bind.annotation.XmlAttribute;
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlType;
@@ -10,6 +11,16 @@ public class Diplome {
     private String texte;
     private String date;
     private String institut;
+    private String niveau;
+
+    @XmlAttribute(name="niveau")
+    public String getNiveau() {
+        return niveau;
+    }
+
+    public void setNiveau(String value) {
+        this.niveau = value;
+    }
 
     @XmlElement(name = "texte", namespace = "http://univ.fr/cv24")
     public String getTexte() {

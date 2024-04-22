@@ -29,7 +29,7 @@ public class ProfType {
     @XmlTransient
     private Long id;
 
-    @XmlElement(required = true)
+    @XmlElement(name="detail",required = true)
     @OneToMany(cascade = CascadeType.ALL)
     private List<DetailType> detailProf;
 
@@ -38,6 +38,10 @@ public class ProfType {
             detailProf = new ArrayList<DetailType>();
         }
         return this.detailProf;
+    }
+
+    public void setDetail(List<DetailType> details) {
+       this.detailProf = details;
     }
 
     public Long getId() {

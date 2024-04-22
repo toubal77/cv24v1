@@ -17,28 +17,21 @@ import jakarta.xml.bind.annotation.XmlType;
 
 @Entity
 @Table(name = "CV24")
-@XmlRootElement(name = "cv24", namespace = "http://univ.fr/cv24")
-@XmlType(propOrder={"cv24s","identite", "objectif", "prof", "competences", "divers"}) 
-@XmlAccessorType(XmlAccessType.FIELD)
 public class CV24type {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @XmlTransient
     private Long id;
 
-    @XmlElement(required = true)
     @OneToOne(cascade = CascadeType.ALL)
     private IdentiteType identite;
 
-    @XmlElement(required = true)
     @OneToOne(cascade = CascadeType.ALL)
     private ObjectifType objectif;
 
     @OneToOne(cascade = CascadeType.ALL)
     private ProfType prof;
 
-    @XmlElement(required = true)
     @OneToOne(cascade = CascadeType.ALL)
     private CompetencesType competences;
 

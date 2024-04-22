@@ -24,11 +24,11 @@ public class ObjectifType {
     @XmlTransient
     private Long id;
 
-    @XmlValue
+    //@XmlValue
     private String objectifValue;
 
     @XmlAttribute(name = "statut", required = true)
-    private StatutType statutObjectif;
+    private String statutObjectif;
 
     public String getObjectifValue() {
         return objectifValue;
@@ -38,11 +38,11 @@ public class ObjectifType {
         this.objectifValue = value;
     }
 
-    public StatutType getstatutObjectif() {
+    public String getstatutObjectif() {
         return statutObjectif;
     }
 
-    public void setstatutObjectif(StatutType value) {
+    public void setstatutObjectif(String value) {
         this.statutObjectif = value;
     }
 

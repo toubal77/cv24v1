@@ -27,11 +27,11 @@ public class LvType {
     @XmlAttribute(name = "lang", required = true)
     private String lang;
     @XmlAttribute(name = "cert", required = true)
-    private CrtType cert;
+    private String cert;
     @XmlAttribute(name = "nivs")
-    private NivsType nivs;
+    private String nivs;
     @XmlAttribute(name = "nivi")
-    private Integer nivi;
+    private String nivi;
 
     public String getLang() {
         return lang;
@@ -42,30 +42,30 @@ public class LvType {
     }
 
 
-    public CrtType getCert() {
+    public String getCert() {
         return cert;
     }
 
 
-    public void setCert(CrtType value) {
+    public void setCert(String value) {
         this.cert = value;
     }
 
-    public NivsType getNivs() {
+    public String getNivs() {
         return nivs;
     }
 
-    public void setNivs(NivsType value) {
+    public void setNivs(String value) {
         this.nivs = value;
     }
 
 
-    public Integer getNivi() {
+    public String getNivi() {
         return nivi;
     }
 
 
-    public void setNivi(Integer value) {
+    public void setNivi(String value) {
         this.nivi = value;
     }
 

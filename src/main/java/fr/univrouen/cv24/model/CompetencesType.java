@@ -28,10 +28,11 @@ public class CompetencesType {
     @XmlTransient
     private Long id;
 
-    @XmlElement(required = true)
+    @XmlElement(name="diplome", required = true)
     @OneToMany(cascade = CascadeType.ALL)
     private List<DiplomeType> diplome;
 
+    @XmlElement(name="certif", required = false)
     @OneToMany(cascade = CascadeType.ALL)
     private List<CertifType> certif;
 
@@ -48,6 +49,14 @@ public class CompetencesType {
         }
         return this.certif;
     }
+
+    public void setCertif( List<CertifType> certifs) {
+         this.certif = certifs;
+    }
+
+    public void setDIplomes( List<DiplomeType> diplomes) {
+        this.diplome = diplomes;
+   }
 
     public Long getId() {
         return id;

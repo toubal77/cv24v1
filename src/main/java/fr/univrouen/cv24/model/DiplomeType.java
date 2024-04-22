@@ -31,24 +31,25 @@ public class DiplomeType {
     @XmlSchemaType(name = "date")
     @XmlElement(required = true)
     @Column(name = "date")
-    private LocalDate diplomeDate;
+    private String diplomeDate;
 
+    @XmlElement(name="institut",required = true)
     private String institutDiplome;
 
-    @XmlElement(required = true)
+    @XmlElement(name="titre",required = true)
     private String titreDiplome;    
 
     @XmlAttribute(name = "niveau", required = true)
-    private int diplomeNiveau; 
+    private String diplomeNiveau; 
 
 
 
-    public LocalDate getDiplomeDate() {
+    public String getDiplomeDate() {
         return diplomeDate;
     }
 
 
-    public void setDiplomeDate(LocalDate value) {
+    public void setDiplomeDate(String value) {
         this.diplomeDate = value;
     }
 
@@ -71,11 +72,11 @@ public class DiplomeType {
     }
 
 
-    public int getDiplomeNiveau() {
+    public String getDiplomeNiveau() {
         return diplomeNiveau;
     }
 
-    public void setDiplomeNiveau(int value) {
+    public void setDiplomeNiveau(String value) {
         this.diplomeNiveau = value;
     }
 

@@ -1,15 +1,16 @@
 package fr.univrouen.cv24.model;
 
-import jakarta.xml.bind.annotation.XmlElement;
-import jakarta.xml.bind.annotation.XmlRootElement;
-import java.util.List;
+import jakarta.xml.bind.annotation.*;
 
-@XmlRootElement(namespace = "http://univ.fr/cv24")
+import java.util.List;
+@XmlRootElement(name="competances" ,namespace = "http://univ.fr/cv24")
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Competences {
+    @XmlElement(name="diplome")
     private List<Diplome> diplomes;
+    @XmlElement(name="certif")
     private List<Certif> certifs;
 
-    @XmlElement(name = "diplome", namespace = "http://univ.fr/cv24")
     public List<Diplome> getDiplomes() {
         return diplomes;
     }
@@ -18,7 +19,6 @@ public class Competences {
         this.diplomes = diplomes;
     }
 
-    @XmlElement(name = "certif", namespace = "http://univ.fr/cv24")
     public List<Certif> getCertifs() {
         return certifs;
     }
