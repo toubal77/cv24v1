@@ -1,7 +1,14 @@
 package fr.univrouen.cv24.services;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 import java.util.NoSuchElementException;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,16 +18,20 @@ import fr.univrouen.cv24.Mapper.CV24Mapper;
 import fr.univrouen.cv24.model.CV24type;
 import fr.univrouen.cv24.model.TestCV;
 import fr.univrouen.cv24.repositorie.CVRepositorie;
-
+import fr.univrouen.cv24.util.Validator;
+import org.w3c.dom.Document;
+import org.xml.sax.SAXException;
 @Service
 public class CV2Service {
 
-      
+    @Autowired
+	private JaxService mapper;
     
         @Autowired
         private CVRepositorie cvRepositorie;
  
-
+	@Autowired
+	private Validator validator;
 
         
         public String findById(Long id) throws NoSuchElementException  {
@@ -75,14 +86,15 @@ public class CV2Service {
         }
 
 
-		
+
 	
         public String insert(TestCV cv24) {
-        
-        
+     
+        //    Boolean response = validator.validateCV24(cv24);
+         //   if(response){
                      if (searchCV24(cv24)) {
                         return  "<message>" + 
-                    							
+                    			"il existe deja"+				
                         "<status>"+ HttpStatus.CONFLICT +"</status>" + 
                     "</message>";
                      }
@@ -91,7 +103,12 @@ public class CV2Service {
                     								
                      									"<status>"+ HttpStatus.OK +"</status>" + 
                  									"</message>";
-    
+         //           }else{
+          //              return  "<message>" + 
+           //             "xml format no valide"+				
+           //     "<status>"+ HttpStatus.CONFLICT +"</status>" + 
+           // "</message>";
+           //         }
            // } else {
            //     return mapper.marchall(new Response(Response.Type.ERROR));
            // }
