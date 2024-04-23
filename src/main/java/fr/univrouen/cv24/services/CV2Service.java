@@ -1,6 +1,7 @@
 package fr.univrouen.cv24.services;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -38,7 +39,26 @@ public class CV2Service {
             return false;
         }
         
-    
+    public String delete(Long id) {
+	
+            CV24type cv24type = cvRepositorie.findById(id).get();
+            if(cv24type != null) {
+                cvRepositorie.delete(cv24type);
+                
+                return "<message>" + 
+                "<id>"+ id +"</id>" + 
+                "<status>"+ HttpStatus.OK +"</status>" + 
+                "</message>";
+                
+            }else return "<message>" + 
+                "<id>"+ id +"</id>" + 
+                "<status>"+ HttpStatus.NOT_FOUND+"</status>" + 
+                "</message>";
+        }
+
+
+		
+	
         public String insert(TestCV cv24) {
         
         
