@@ -17,7 +17,7 @@ import jakarta.xml.bind.annotation.XmlType;
 @Entity
 @Table(name = "Certif")
 @XmlRootElement(name = "certif")
-@XmlType(name = "certif",propOrder={"certifTitre", "certifDatedeb", "certifDatefin"})
+@XmlType(name = "certif",propOrder={"titre", "datedeb", "datefin"})
 @XmlAccessorType(XmlAccessType.FIELD)
 public class CertifType {
 

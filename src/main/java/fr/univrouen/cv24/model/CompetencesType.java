@@ -32,7 +32,7 @@ public class CompetencesType {
     @OneToMany(cascade = CascadeType.ALL)
     private List<DiplomeType> diplome;
 
-    @XmlElement(name="certif", required = false)
+    @XmlElement(required = true)
     @OneToMany(cascade = CascadeType.ALL)
     private List<CertifType> certif;
 

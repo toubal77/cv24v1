@@ -41,21 +41,8 @@ public abstract class CompetencesMapper {
 
 public CompetencesType toEntity(Competences competences) {
     CompetencesType competencesEntity = new CompetencesType();
-    List<CertifType> certifTypeList = new ArrayList<>();
-    for (Certif certif : competences.getCertifs()) {
-        CertifType certifType = CertifsMapper.INSTANCE.toEntity(certif);
-        certifTypeList.add(certifType);
-    }
-    competencesEntity.setCertif(certifTypeList);
-
-    // Faites de même pour Diplome
-    List<DiplomeType> diplomeTypeList = new ArrayList<>();
-    for (Diplome diplome : competences.getDiplomes()) {
-        DiplomeType diplomeType = DiplomeMapper.INSTANCE.toEntity(diplome);
-        diplomeTypeList.add(diplomeType);
-    }
-    competencesEntity.setDIplomes(diplomeTypeList);
-
+    competencesEntity.setDIplomes(DiplomeMapper.INSTANCE.toEntities(competences.getDiplomes()));
+    competencesEntity.setCertif( CertifsMapper.INSTANCE.toEntities(competences.getCertifs()));
     return competencesEntity;
 }
 

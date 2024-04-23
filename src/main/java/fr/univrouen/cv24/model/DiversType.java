@@ -29,9 +29,9 @@ public class DiversType {
     @XmlTransient
     private Long id;
 
-    @XmlElement(name="lv",required = true)
-    @OneToMany(mappedBy = "divers", cascade = CascadeType.ALL)
-    private List<LvType> lv;
+    @XmlElement(required = true)
+    @OneToMany(cascade = CascadeType.ALL)
+    protected List<LvType> lv;
 
     @XmlElement(name="autre",required = true)
     @OneToOne(cascade = CascadeType.ALL)

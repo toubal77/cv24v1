@@ -6,9 +6,9 @@ import java.util.List;
 @XmlRootElement(name="competances" ,namespace = "http://univ.fr/cv24")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Competences {
-    @XmlElement(name="diplome")
+    @XmlElement(name = "diplome", namespace = "http://univ.fr/cv24")
     private List<Diplome> diplomes;
-    @XmlElement(name="certif")
+    @XmlElement(name = "certif", namespace = "http://univ.fr/cv24")
     private List<Certif> certifs;
 
     public List<Diplome> getDiplomes() {

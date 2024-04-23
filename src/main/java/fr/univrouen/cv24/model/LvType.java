@@ -37,9 +37,9 @@ public class LvType {
     @XmlAttribute(name = "nivi")
     private String nivi;
 
-    @ManyToOne
-    @JoinColumn(name = "divers_id")
-    private DiversType divers;
+    // @ManyToOne
+    // @JoinColumn(name = "divers_id", referencedColumnName = "id")
+    // private DiversType divers;
 
     public String getLang() {
         return lang;
@@ -77,11 +77,11 @@ public class LvType {
         return id;
     }
 
-    public DiversType getDivers() {
-        return divers;
-    }
+    // public DiversType getDivers() {
+    //     return divers;
+    // }
 
-    public void setDivers(DiversType divers) {
-        this.divers = divers;
-    }
+    // public void setDivers(DiversType divers) {
+    //     this.divers = divers;
+    // }
 }

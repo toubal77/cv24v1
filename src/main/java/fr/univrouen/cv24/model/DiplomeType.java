@@ -17,7 +17,7 @@ import jakarta.xml.bind.annotation.XmlType;
 @Entity
 @Table(name = "Diplome")
 @XmlRootElement(name = "diplome")
-@XmlType(propOrder={"titreDiplome", "diplomeDate", "institutDiplome","diplomeNiveau"})
+@XmlType(propOrder={"titre", "date", "institut","niveau"})
 @XmlAccessorType(XmlAccessType.FIELD)
 public class DiplomeType {
 
