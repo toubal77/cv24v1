@@ -4,8 +4,6 @@ package fr.univrouen.cv24.model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
 import jakarta.xml.bind.annotation.XmlAccessorType;
@@ -36,10 +34,6 @@ public class LvType {
 
     @XmlAttribute(name = "nivi")
     private String nivi;
-
-    // @ManyToOne
-    // @JoinColumn(name = "divers_id", referencedColumnName = "id")
-    // private DiversType divers;
 
     public String getLang() {
         return lang;
