@@ -10,6 +10,7 @@ import javax.xml.bind.Marshaller;
 import org.springframework.stereotype.Service;
 
 import fr.univrouen.cv24.model.CV24type;
+import fr.univrouen.cv24.model.Response;
 import fr.univrouen.cv24.model.TestCV;
 
 
@@ -31,5 +32,19 @@ public class JaxService {
 			return null;
 		}
 		
+	}
+
+	public String marchall(Response response) {
+		try {
+			Marshaller jaxbMarshaller = JAXBContext.newInstance(Response.class).createMarshaller();
+			StringWriter sw = new StringWriter();
+			jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+			jaxbMarshaller.setProperty(Marshaller.JAXB_ENCODING, "UTF-8");
+			jaxbMarshaller.marshal(response, sw);
+			return sw.toString();
+		} catch (JAXBException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 }

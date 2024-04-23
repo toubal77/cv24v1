@@ -15,8 +15,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import fr.univrouen.cv24.Mapper.CV24Mapper;
-import fr.univrouen.cv24.model.CV24type;
-import fr.univrouen.cv24.model.TestCV;
+import fr.univrouen.cv24.model.*;
 import fr.univrouen.cv24.repositorie.CVRepositorie;
 import fr.univrouen.cv24.util.Validator;
 import org.w3c.dom.Document;
@@ -89,29 +88,24 @@ public class CV2Service {
 
 	
         public String insert(TestCV cv24) {
-     
+     if(cv24 !=null){
         //    Boolean response = validator.validateCV24(cv24);
          //   if(response){
                      if (searchCV24(cv24)) {
-                        return  "<message>" + 
-                    			"il existe deja"+				
-                        "<status>"+ HttpStatus.CONFLICT +"</status>" + 
-                    "</message>";
+                        return mapper.marchall(new Response(Response.Type.ERROR, "Flux déjà existant !"));
+                     
                      }
-                 cvRepositorie.save(CV24Mapper.INSTANCE.toEntity(cv24));
-                    return  "<message>" + 
-                    								
-                     									"<status>"+ HttpStatus.OK +"</status>" + 
-                 									"</message>";
+                     CV24type cv =    cvRepositorie.save(CV24Mapper.INSTANCE.toEntity(cv24));
+                 	return mapper.marchall(new Response(cv.getId(), Response.Type.INSERTED));
          //           }else{
           //              return  "<message>" + 
            //             "xml format no valide"+				
            //     "<status>"+ HttpStatus.CONFLICT +"</status>" + 
            // "</message>";
            //         }
-           // } else {
-           //     return mapper.marchall(new Response(Response.Type.ERROR));
-           // }
+            } else {
+                return mapper.marchall(new Response(Response.Type.ERROR));
+            }
         }
         
 
