@@ -19,9 +19,27 @@ public class CV2Service {
     
         @Autowired
         private CVRepositorie cvRepositorie;
+ 
+
+
         
-       
+        public String findById(Long id) throws NoSuchElementException  {
+            try {
+                CV24type cv24Entity = cvRepositorie.findById(id).get();
+                TestCV cv = CV24Mapper.INSTANCE.toModel(cv24Entity);
+                return "<message>" + 
+                "<id>"+ cv.getIdentite().getNom() +"</id>" + 
+                "<status>"+ HttpStatus.OK+"</status>" + 
+                "</message>";
+
+            } catch (NoSuchElementException e) {
+                return "<message>" + 
+                "<id>"+ id +"</id>" + 
+                "<status>"+ HttpStatus.NOT_FOUND+"</status>" + 
+                "</message>";
+            }	
     
+        }
     
         public Boolean searchCV24(TestCV cv24) {
             List<CV24type> cvList = cvRepositorie.findAll();

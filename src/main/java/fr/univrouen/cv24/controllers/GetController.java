@@ -1,9 +1,12 @@
 package fr.univrouen.cv24.controllers;
 
 import java.io.InputStream;
+import java.io.StringWriter;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,14 +17,19 @@ import org.springframework.ui.Model;
 import fr.univrouen.cv24.model.CV24type;
 import fr.univrouen.cv24.model.TestCV;
 import fr.univrouen.cv24.repositorie.CVRepositorie;
+import fr.univrouen.cv24.services.CV2Service;
 import fr.univrouen.cv24.util.Fichier;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
+import jakarta.xml.bind.Marshaller;
 import jakarta.xml.bind.Unmarshaller;
 
 @Controller
 public class GetController {
-
+	private Marshaller jaxbMarshaller;
+	private JAXBContext jaxbContext;
+    	@Autowired
+	private CV2Service cv24Service;
     @Autowired
 	private CVRepositorie cvRepositorie;
 
@@ -33,7 +41,13 @@ public class GetController {
 
         return "cv24Resume";
     }
-    
+
+    @GetMapping(value="/cv24/xml", produces=MediaType.APPLICATION_XML_VALUE)
+	@ResponseBody
+	public String cvXML(@RequestParam Long id) {
+		return cv24Service.findById(id);
+	}
+
 @GetMapping("/cvid")
 public String getCVinXML(
 @RequestParam(value = "texte") String texte) {
