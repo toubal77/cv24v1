@@ -48,6 +48,12 @@ public class GetController {
 		return cv24Service.findById(id);
 	}
 
+    @GetMapping(value="/cv24/html", produces=MediaType.APPLICATION_XML_VALUE)
+	@ResponseBody
+	public String cvHTML(@RequestParam Long id) {
+		return cv24Service.findById(id);
+	}
+
 @GetMapping("/cvid")
 public String getCVinXML(
 @RequestParam(value = "texte") String texte) {
