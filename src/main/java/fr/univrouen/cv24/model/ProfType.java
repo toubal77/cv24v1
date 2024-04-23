@@ -3,9 +3,11 @@ package fr.univrouen.cv24.model;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlAccessType;
@@ -26,10 +28,11 @@ public class ProfType {
     @Id
     @GeneratedValue
     @XmlTransient
+     @Column(name="id")
     private Long id;
-    @XmlElementWrapper
-    @XmlElement(name = "detail")
-    @OneToMany(mappedBy = "prof", cascade = CascadeType.ALL)
+    @XmlElement(required = true)
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name="fk_id_prof", referencedColumnName = "id")
     private List<DetailType> detail;
 
     public List<DetailType> getDetail() {
