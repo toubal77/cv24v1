@@ -8,6 +8,7 @@ import javax.xml.bind.Marshaller;
 
 
 import org.springframework.stereotype.Service;
+
 import fr.univrouen.cv24.model.CV24s;
 import fr.univrouen.cv24.model.CV24type;
 import fr.univrouen.cv24.model.Response;
@@ -47,7 +48,7 @@ public class JaxService {
 			e.printStackTrace();
 			return null;
 		}
-
+		
 	}
 
 	public String marchall(Response response) {
@@ -63,6 +64,7 @@ public class JaxService {
 			return null;
 		}
 	}
+
 
 	public String marchall(CV24s cv24s) {
 		try {

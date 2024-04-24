@@ -35,13 +35,13 @@ import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
-
 @Component
 public class TransformToXML {
 	
 	@Autowired
     private TemplateEngine templateEngine;
 	
+
     public String transformCV24ListXSLResume(List<TestCV> list) throws TransformerException {
         try {
             System.out.println("lllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll");
@@ -49,7 +49,7 @@ public class TransformToXML {
             JAXBContext jaxbContext = JAXBContext.newInstance(CV24ListWrapper.class);
             Marshaller marshaller = jaxbContext.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-
+    
             // Encapsulate the list in a wrapper object
             CV24ListWrapper wrapper = new CV24ListWrapper();
             wrapper.setTestCVs(list);
@@ -58,14 +58,14 @@ public class TransformToXML {
             // Marshall the wrapper object
             StringWriter writer = new StringWriter();
             marshaller.marshal(wrapper, writer);
-
+    
             return writer.toString();
         } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
     }
-	
+    
 	public String transformCV24ListXSLResumeXML(TestCV cv24s) throws TransformerException, JAXBException {
         try {
 
@@ -87,30 +87,31 @@ public class TransformToXML {
         }
     }
 
+
     public String transformCV24ListXSLResumeHTMLList(List<TestCV> list) {
         try {
-
+          
             Cv24sListWrapper wrapper = new Cv24sListWrapper();
             wrapper.setCv24List(list);
-
+            
 
             JAXBContext jaxbContext = JAXBContext.newInstance(Cv24sListWrapper.class);
             Marshaller marshaller = jaxbContext.createMarshaller();
             StringWriter xmlWriter = new StringWriter();
             marshaller.marshal(wrapper, xmlWriter);
-
-
+            
+      
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             StreamSource xsltSource = new StreamSource(getClass().getResourceAsStream("/cv24s.xslt"));
-
+            
             Transformer transformer = transformerFactory.newTransformer(xsltSource);
             StreamSource xmlSource = new StreamSource(new StringReader(xmlWriter.toString()));
             StringWriter htmlWriter = new StringWriter(); 
             transformer.transform(xmlSource, new StreamResult(htmlWriter));
-
+            
             String htmlContent = htmlWriter.toString(); 
             System.out.println("Transformation XML vers HTML terminée.");
-
+            
             return htmlContent;
         } catch (Exception e) {
             e.printStackTrace();
@@ -123,27 +124,28 @@ public class TransformToXML {
             // Marshalliser un objet en XML
             JAXBContext jaxbContext = JAXBContext.newInstance(TestCV.class);
             Marshaller marshaller = jaxbContext.createMarshaller();
-
+    
             StringWriter xmlWriter = new StringWriter();
             marshaller.marshal(testCV, xmlWriter);
-
-            // Charger le fichier XSLT
+    
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             StreamSource xsltSource = new StreamSource(getClass().getResourceAsStream("/html.xslt"));
-
-            // Appliquer la transformation XSLT
+    
+   
             Transformer transformer = transformerFactory.newTransformer(xsltSource);
             StreamSource xmlSource = new StreamSource(new StringReader(xmlWriter.toString()));
-
-            StringWriter htmlWriter = new StringWriter(); // StringWriter pour capturer la sortie HTML
+            //System.out.println(xmlSource);
+            StringWriter htmlWriter = new StringWriter(); 
             transformer.transform(xmlSource, new StreamResult(htmlWriter));
-
-            String htmlContent = htmlWriter.toString(); // Convertir la sortie HTML en une chaîne de caractères
+           
+            String htmlContent = htmlWriter.toString(); 
             System.out.println("Transformation XML vers HTML terminée.");
-
+            
             return htmlContent;
         } catch (Exception e) {
             e.printStackTrace();
             return null;
         }}
-    }
+    
+
+}

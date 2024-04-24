@@ -92,7 +92,7 @@ public class CV2Service {
 private String loadHtmlTemplate() {
     try {
         InputStream inputStream = getClass().getResourceAsStream("/erreurHtml.html");
-                if (inputStream != null) {
+        if (inputStream != null) {
             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
             StringBuilder stringBuilder = new StringBuilder();
             String line;

@@ -1,13 +1,9 @@
 package fr.univrouen.cv24.controllers;
 
-import java.io.StringReader;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import fr.univrouen.cv24.model.TestCV;
-import fr.univrouen.cv24.repositorie.CVRepositorie;
 import fr.univrouen.cv24.services.CV2Service;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;
@@ -17,8 +13,7 @@ public class PostController {
 
 	@Autowired
 	private CV2Service cv24Service;
-	@Autowired
-	private CVRepositorie cvRepositorie;
+
 	
 	JAXBContext jaxbContext;
     Unmarshaller jaxbUnmarshaller;

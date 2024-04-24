@@ -20,4 +20,4 @@ public class CV24ListWrapper {
     public void setTestCVs(List<TestCV> testCVs) {
         this.testCVs = testCVs;
     }
-}   
+}
