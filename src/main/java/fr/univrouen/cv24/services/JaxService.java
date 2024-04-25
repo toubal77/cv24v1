@@ -34,6 +34,22 @@ public class JaxService {
 		
 	}
 
+	public String marchall(CV24type cv24) {
+		try {
+			JAXBContext jaxbContext = JAXBContext.newInstance(CV24type.class);
+			Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
+			StringWriter sw = new StringWriter();
+			jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+			jaxbMarshaller.setProperty(Marshaller.JAXB_ENCODING, "UTF-8");
+			jaxbMarshaller.marshal(cv24, sw);
+			return sw.toString();
+		} catch (JAXBException e) {
+			e.printStackTrace();
+			return null;
+		}
+
+	}
+
 	public String marchall(Response response) {
 		try {
 			Marshaller jaxbMarshaller = JAXBContext.newInstance(Response.class).createMarshaller();

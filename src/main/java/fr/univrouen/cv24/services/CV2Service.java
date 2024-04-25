@@ -42,23 +42,27 @@ public class CV2Service {
 
 	}
         
-        public String findById(Long id) throws NoSuchElementException  {
-            try {
-                CV24type cv24Entity = cvRepositorie.findById(id).get();
-                TestCV cv = CV24Mapper.INSTANCE.toModel(cv24Entity);
-                return "<message>" + 
-                "<id>"+ cv.getIdentite().getNom() +"</id>" + 
-                "<status>"+ HttpStatus.OK+"</status>" + 
-                "</message>";
+    public String findByIdXML(Long id) throws NoSuchElementException, TransformerException  {
+		try {
+			CV24type cv24 = cvRepositorie.findById(id).get();
 
-            } catch (NoSuchElementException e) {
-                return "<message>" + 
-                "<id>"+ id +"</id>" + 
-                "<status>"+ HttpStatus.NOT_FOUND+"</status>" + 
-                "</message>";
-            }	
-    
-        }
+			return transformer.transformCV24ListXSLResumeXML(mapper.marchall(
+                CV24Mapper.INSTANCE.toModel(cv24)));
+		} catch (NoSuchElementException e) {
+			return mapper.marchall(new Response(id, Response.Type.ERROR));
+		}	
+
+	}
+
+    public String findByIdHTML(Long id) throws NoSuchElementException, TransformerException  {
+		try {
+			CV24type cv24 = cvRepositorie.findById(id).get();
+			return transformer.transformCV24ListXSLResumeHTML(mapper.marchall(cv24));
+		} catch (NoSuchElementException e) {
+			return mapper.marchall(new Response(id, Response.Type.ERROR));
+		}	
+
+	}
     
         public Boolean searchCV24(TestCV cv24) {
             List<CV24type> cvList = cvRepositorie.findAll();

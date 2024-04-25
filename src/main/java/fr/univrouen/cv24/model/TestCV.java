@@ -6,7 +6,7 @@ import java.util.List;
 
 @XmlRootElement(name = "cv24", namespace = "http://univ.fr/cv24")
 public class TestCV {
-    @XmlElement(namespace = "http://univ.fr/cv24")
+    
     private static final long serialVersionUID = 2024L;
     private static int compteur = 1;
 

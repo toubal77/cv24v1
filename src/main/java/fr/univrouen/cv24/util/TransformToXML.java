@@ -32,7 +32,31 @@ public class TransformToXML {
 
 	}
 
+	public String transformCV24ListXSLResumeXML(String stbs) throws TransformerException {
+		TransformerFactory tFactory = new TransformerFactoryImpl();
 
+		Transformer transformer = tFactory.newTransformer(new StreamSource(getClass().getResourceAsStream("/xml.xslt")));
+
+		StringWriter sw = new StringWriter();
+
+		transformer.transform(new StreamSource(new StringReader(stbs)), new StreamResult(sw));
+
+		return sw.toString();
+
+	}
+
+	public String transformCV24ListXSLResumeHTML(String stbs) throws TransformerException {
+		TransformerFactory tFactory = new TransformerFactoryImpl();
+
+		Transformer transformer = tFactory.newTransformer(new StreamSource(getClass().getResourceAsStream("/html.xslt")));
+
+		StringWriter sw = new StringWriter();
+
+		transformer.transform(new StreamSource(new StringReader(stbs)), new StreamResult(sw));
+
+		return sw.toString();
+
+	}
 
 
 

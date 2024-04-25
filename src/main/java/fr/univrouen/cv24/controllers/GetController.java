@@ -3,7 +3,10 @@ package fr.univrouen.cv24.controllers;
 import java.io.InputStream;
 import java.io.StringWriter;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
+
+import javax.xml.transform.TransformerException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -34,32 +37,25 @@ public class GetController {
     @Autowired
 	private CVRepositorie cvRepositorie;
 
-    @GetMapping(path = "/cv24/resume", produces = MediaType.TEXT_HTML_VALUE)
-    public String listeCV(Model model) {
-        List<CV24type> cv24s = cvRepositorie.findAll();
 
-        model.addAttribute("cv24s", cv24s);
 
-        return "cv24Resume";
-    }
-
-    @RequestMapping( value="/cv24/resume", method = {RequestMethod.GET, RequestMethod.POST}, 
+	@RequestMapping( value="/cv24/resume", method = {RequestMethod.GET, RequestMethod.POST}, 
 			produces=MediaType.APPLICATION_XML_VALUE)
 	@ResponseBody
 	public String resume() throws TransformerException {
 		return cv24Service.getAllCv24s();
 	}
 
-    @GetMapping(value="/cv24/xml", produces=MediaType.APPLICATION_XML_VALUE)
+    @GetMapping(value="/cv24/resume/xml", produces=MediaType.APPLICATION_XML_VALUE)
 	@ResponseBody
-	public String cvXML(@RequestParam Long id) {
-		return cv24Service.findById(id);
+	public String cvXML(@RequestParam Long id) throws NoSuchElementException, TransformerException {
+		return cv24Service.findByIdXML(id);
 	}
 
-    @GetMapping(value="/cv24/html", produces=MediaType.APPLICATION_XML_VALUE)
+    @GetMapping(value="/cv24/resume/html", produces=MediaType.APPLICATION_XML_VALUE)
 	@ResponseBody
-	public String cvHTML(@RequestParam Long id) {
-		return cv24Service.findById(id);
+	public String cvHTML(@RequestParam Long id) throws NoSuchElementException, TransformerException {
+		return cv24Service.findByIdHTML(id);
 	}
 
 @GetMapping("/cvid")
