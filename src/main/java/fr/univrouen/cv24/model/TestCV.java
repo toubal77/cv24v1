@@ -2,6 +2,7 @@ package fr.univrouen.cv24.model;
 
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
+import java.util.List;
 
 @XmlRootElement(name = "cv24", namespace = "http://univ.fr/cv24")
 public class TestCV {
@@ -63,6 +64,10 @@ public class TestCV {
 
 
     public TestCV() {
+    }
+
+    public TestCV(List<TestCV> models) {
+
     }
 
 

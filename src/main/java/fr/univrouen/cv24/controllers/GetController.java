@@ -11,6 +11,7 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.ui.Model;
@@ -41,6 +42,13 @@ public class GetController {
 
         return "cv24Resume";
     }
+
+    @RequestMapping( value="/cv24/resume", method = {RequestMethod.GET, RequestMethod.POST}, 
+			produces=MediaType.APPLICATION_XML_VALUE)
+	@ResponseBody
+	public String resume() throws TransformerException {
+		return cv24Service.getAllCv24s();
+	}
 
     @GetMapping(value="/cv24/xml", produces=MediaType.APPLICATION_XML_VALUE)
 	@ResponseBody

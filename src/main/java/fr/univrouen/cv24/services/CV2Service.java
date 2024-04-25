@@ -9,6 +9,7 @@ import java.util.NoSuchElementException;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.transform.TransformerException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,6 +18,7 @@ import org.springframework.stereotype.Service;
 import fr.univrouen.cv24.Mapper.CV24Mapper;
 import fr.univrouen.cv24.model.*;
 import fr.univrouen.cv24.repositorie.CVRepositorie;
+import fr.univrouen.cv24.util.TransformToXML;
 import fr.univrouen.cv24.util.Validator;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
@@ -31,7 +33,14 @@ public class CV2Service {
  
 	@Autowired
 	private Validator validator;
+    @Autowired
+	private TransformToXML transformer;
+    public String getAllCv24s() throws TransformerException {
 
+			return transformer.transformCV24ListXSLResume(mapper.marchall(
+					new CV24s(CV24Mapper.INSTANCE.toModels(cvRepositorie.findAll()))));
+
+	}
         
         public String findById(Long id) throws NoSuchElementException  {
             try {
