@@ -6,7 +6,6 @@ import java.util.List;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
-import fr.univrouen.cv24.model.Autre;
 import fr.univrouen.cv24.model.Divers;
 import fr.univrouen.cv24.model.DiversType;
 import fr.univrouen.cv24.model.Lv;

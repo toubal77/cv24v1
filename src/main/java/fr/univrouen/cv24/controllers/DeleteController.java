@@ -5,8 +5,9 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import fr.univrouen.cv24.repositorie.CVRepositorie;
+import fr.univrouen.cv24.model.Response;
 import fr.univrouen.cv24.services.CV2Service;
+import fr.univrouen.cv24.services.JaxService;
 
 
 

@@ -3,13 +3,11 @@ package fr.univrouen.cv24.util;
 import java.io.StringReader;
 import java.io.StringWriter;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.Source;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.Schema;
