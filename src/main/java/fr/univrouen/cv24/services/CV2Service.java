@@ -58,8 +58,8 @@ public class CV2Service {
     public String findByIdHTML(Long id) throws NoSuchElementException, TransformerException  {
 		try {
 			CV24type cv24 = cvRepositorie.findById(id).get();
-			return transformer.transformCV24ListXSLResumeHTML(mapper.marchall(cv24));
-		} catch (NoSuchElementException e) {
+            return transformer.transformCV24ListXSLResumeHTML( CV24Mapper.INSTANCE.toModel(cv24));
+        		} catch (NoSuchElementException e) {
 			return mapper.marchall(new Response(id, Response.Type.ERROR));
 		}	
 

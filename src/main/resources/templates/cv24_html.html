@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>CV Details</title>
+    <link rel="stylesheet" type="text/css" href="styles.css"/>
+</head>
+
+<body>
+    <h1>CV Details</h1>
+    <div th:object="${testCV}">
+        <h2>Identite</h2>
+        <p>
+            <strong>Nom:</strong> <span th:text="*{identite.nom}"></span>
+        </p>
+        <p>
+            <strong>Prénom:</strong> <span th:text="*{identite.prenom}"></span>
+        </p>
+        <p>
+            <strong>Téléphone:</strong> <span th:text="*{identite.tel}"></span>
+        </p>
+        <p>
+            <strong>Email:</strong> <span th:text="*{identite.mel}"></span>
+        </p>
+    </div>
+</body>
+</html>

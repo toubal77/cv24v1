@@ -20,11 +20,18 @@ import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Marshaller;
 import net.sf.saxon.TransformerFactoryImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.ui.Model;
+import org.springframework.web.servlet.ModelAndView;
+import org.thymeleaf.TemplateEngine;
+import org.thymeleaf.context.Context;
 
 @Component
 public class TransformToXML {
 	
-
+	@Autowired
+    private TemplateEngine templateEngine;
 	
 	public String transformCV24ListXSLResume(String cv24s) throws TransformerException {
 		TransformerFactory tFactory = new TransformerFactoryImpl();
@@ -59,6 +66,27 @@ public class TransformToXML {
             return null; 
         }
     }
+    
+	public String transformCV24ListXSLResumeHTML(TestCV testCV) {
+
+        try {
+            // Créer un contexte Thymeleaf et ajouter l'objet TestCV au modèle
+            Context context = new Context();
+            context.setVariable("testCV", testCV);
+
+            // Utiliser le moteur de template Thymeleaf pour traiter le modèle et générer du HTML
+            String htmlContent = templateEngine.process("cv24_html", context);
+
+            return htmlContent;
+        } catch (Exception e) {
+            // Gérer les exceptions ici
+            e.printStackTrace();
+            return null; // Ou une chaîne d'erreur personnalisée
+        }
+    }
+
+
+}
 
 	public String transformCV24ListXSLResumeHTML(String cv24s) throws TransformerException {
 		TransformerFactory tFactory = new TransformerFactoryImpl();
