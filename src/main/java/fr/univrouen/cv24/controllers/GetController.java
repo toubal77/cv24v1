@@ -48,7 +48,7 @@ public class GetController {
 
     @GetMapping(value="/cv24/resume/xml", produces=MediaType.APPLICATION_XML_VALUE)
 	@ResponseBody
-	public String cvXML(@RequestParam Long id) throws NoSuchElementException, TransformerException {
+	public String cvXML(@RequestParam Long id) throws NoSuchElementException, TransformerException, JAXBException {
 		return cv24Service.findByIdXML(id);
 	}
 

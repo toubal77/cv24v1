@@ -20,6 +20,7 @@ import fr.univrouen.cv24.model.*;
 import fr.univrouen.cv24.repositorie.CVRepositorie;
 import fr.univrouen.cv24.util.TransformToXML;
 import fr.univrouen.cv24.util.Validator;
+import jakarta.xml.bind.JAXBException;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 @Service
@@ -42,12 +43,12 @@ public class CV2Service {
 
 	}
         
-    public String findByIdXML(Long id) throws NoSuchElementException, TransformerException  {
+    public String findByIdXML(Long id) throws NoSuchElementException, TransformerException, JAXBException {
 		try {
 			CV24type cv24 = cvRepositorie.findById(id).get();
 
-			return transformer.transformCV24ListXSLResumeXML(mapper.marchall(
-                CV24Mapper.INSTANCE.toModel(cv24)));
+            return transformer.transformCV24ListXSLResumeXML(
+                CV24Mapper.INSTANCE.toModel(cv24));
 		} catch (NoSuchElementException e) {
 			return mapper.marchall(new Response(id, Response.Type.ERROR));
 		}	
