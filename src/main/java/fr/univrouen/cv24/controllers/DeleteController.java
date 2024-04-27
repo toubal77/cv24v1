@@ -17,8 +17,15 @@ public class DeleteController {
 	private CV2Service cv24Service;
 	
 	
-	@DeleteMapping(value="/cv24/delete")
-	public String delete(@RequestParam Long id) {
-		return cv24Service.delete(id);		
+	@DeleteMapping(value = "/cv24/delete")
+	public String delete(@RequestParam(required = false) Long id) {
+		try {
+			if (id == null) {
+				throw new IllegalArgumentException("Veuillez indiquer l'ID du CV à supprimer");
+			}
+			return cv24Service.delete(id);
+		} catch (Exception e) {
+			return mapper.marchall(new Response(Response.Type.ERROR, e.getMessage()));
+		}
 	}
 }

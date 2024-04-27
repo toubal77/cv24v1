@@ -67,6 +67,7 @@ public class Response {
 
 	public static enum Type{
 		OK,
+		DUPLICATED,
 		INSERTED,
 		DELETED,
 		UPDATED,

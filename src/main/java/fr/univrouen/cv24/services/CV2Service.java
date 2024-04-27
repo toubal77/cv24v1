@@ -1,8 +1,10 @@
 package fr.univrouen.cv24.services;
 
+import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -10,6 +12,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
+import javax.xml.transform.stream.StreamSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -36,12 +39,15 @@ public class CV2Service {
 	private Validator validator;
     @Autowired
 	private TransformToXML transformer;
-    public String getAllCv24s() throws TransformerException {
-
-			return transformer.transformCV24ListXSLResume(mapper.marchall(
-					new CV24s(CV24Mapper.INSTANCE.toModels(cvRepositorie.findAll()))));
-
-	}
+    public String getAllCv24sXML() throws TransformerException {
+        try {
+            List<CV24type> testCVs = cvRepositorie.findAll();
+            return transformer.transformCV24ListXSLResume(   CV24Mapper.INSTANCE.toModels(testCVs));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
         
     public String findByIdXML(Long id) throws NoSuchElementException, TransformerException, JAXBException {
 		try {
@@ -55,31 +61,61 @@ public class CV2Service {
 
 	}
 
-    public String findByIdHTML(Long id) throws NoSuchElementException, TransformerException  {
-		try {
-			CV24type cv24 = cvRepositorie.findById(id).get();
-            return transformer.transformCV24ListXSLResumeHTML( CV24Mapper.INSTANCE.toModel(cv24));
-        		} catch (NoSuchElementException e) {
-			return mapper.marchall(new Response(id, Response.Type.ERROR));
-		}	
-
-	}
-    
-        public Boolean searchCV24(TestCV cv24) {
-            List<CV24type> cvList = cvRepositorie.findAll();
-
-            for (CV24type cv : cvList) {
-                if (cv.getIdentite().getGenre().equals(cv24.getIdentite().getGenre()) &&
-                    cv.getIdentite().getNom().equals(cv24.getIdentite().getNom()) &&
-                    cv.getIdentite().getPrenom().equals(cv24.getIdentite().getPrenom()) &&
-                    cv.getIdentite().getTel().equals(cv24.getIdentite().getTel())) {
-                    return true;
-           
-                }
-            }
-            
-            return false;
+    public String findByIdHTML(Long id) {
+        try {
+            CV24type cv24 = cvRepositorie.findById(id).get();
+            return transformer.transformCV24ListXSLResumeHTML(CV24Mapper.INSTANCE.toModel(cv24));
+        } catch (NoSuchElementException e) {
+            String errorMessage = "<strong>Error:</strong> CV avec ID " + id + " non trouve";
+            String errorHtml = loadHtmlTemplate();
+            errorHtml = errorHtml.replace("<p id=\"error-message\"></p>", "<p id=\"error-message\">" + errorMessage + "</p>");
+            return errorHtml;
         }
+    }
+    
+    private String loadHtmlTemplate() {
+        try {
+            InputStream inputStream = getClass().getResourceAsStream("/error.html");
+            if (inputStream != null) {
+                BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+                StringBuilder stringBuilder = new StringBuilder();
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    stringBuilder.append(line);
+                }
+                reader.close();
+                return stringBuilder.toString();
+            } else {
+                System.err.println("Le fichier HTML n'a pas été trouvé.");
+                return "";
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            return "";
+        }
+    }
+    
+    public Boolean searchCV24(TestCV cv24) {
+        List<CV24type> cvList = cvRepositorie.findAll();
+    //    Boolean response = validator.validateCV24(cv24);
+     //   if(response){
+                 if (searchCV24(cv24)) {
+                    return mapper.marchall(new Response(Response.Type.DUPLICATED, "Flux déjà existant !"));
+
+                 }
+                 CV24type cv =    cvRepositorie.save(CV24Mapper.INSTANCE.toEntity(cv24));
+                 return mapper.marchall(new Response(cv.getId(), Response.Type.INSERTED));
+     //           }else{
+      //              return  "<message>" + 
+       //             "xml format no valide"+				
+       //     "<status>"+ HttpStatus.CONFLICT +"</status>" + 
+       // "</message>";
+       //         }
+        } else {
+            return mapper.marchall(new Response(Response.Type.ERROR));
+        }
+    }
+    
         
     public String delete(Long id) {
 	

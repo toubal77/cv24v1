@@ -29,23 +29,23 @@ public class GetController {
 
 
 
-	@RequestMapping( value="/cv24/resume", method = {RequestMethod.GET, RequestMethod.POST}, 
-			produces=MediaType.APPLICATION_XML_VALUE)
-	@ResponseBody
-	public String resume() throws TransformerException {
-		return cv24Service.getAllCv24s();
-	}
+    @RequestMapping( value="/cv24/resume/xml", method = RequestMethod.GET, 
+    produces=MediaType.APPLICATION_XML_VALUE)
+@ResponseBody
+public String resume() throws TransformerException {
+return cv24Service.getAllCv24sXML();
+}
 
-    @GetMapping(value="/cv24/resume/xml", produces=MediaType.APPLICATION_XML_VALUE)
-	@ResponseBody
-	public String cvXML(@RequestParam Long id) throws NoSuchElementException, TransformerException, JAXBException {
-		return cv24Service.findByIdXML(id);
-	}
+@GetMapping(value="/cv24/xml", produces = MediaType.APPLICATION_XML_VALUE)
+@ResponseBody
+public String cvXML(@RequestParam Long id) throws NoSuchElementException, TransformerException, JAXBException {
+return cv24Service.findByIdXML(id);
+}
 
-    @GetMapping(value="/cv24/resume/html", produces=MediaType.APPLICATION_XML_VALUE)
-	@ResponseBody
-	public String cvHTML(@RequestParam Long id) throws NoSuchElementException, TransformerException {
-		return cv24Service.findByIdHTML(id);
+@GetMapping(value="/cv24/html" ,produces = MediaType.TEXT_HTML_VALUE)
+@ResponseBody
+public String cvHTML(@RequestParam Long id) throws NoSuchElementException, TransformerException {
+return cv24Service.findByIdHTML(id);
 	}
 
 @GetMapping("/cvid")
