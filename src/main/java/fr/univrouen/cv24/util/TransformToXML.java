@@ -87,6 +87,37 @@ public class TransformToXML {
         }
     }
 
+    public String transformCV24ListXSLResumeHTMLList(List<TestCV> list) {
+        try {
+
+            Cv24sListWrapper wrapper = new Cv24sListWrapper();
+            wrapper.setCv24List(list);
+
+
+            JAXBContext jaxbContext = JAXBContext.newInstance(Cv24sListWrapper.class);
+            Marshaller marshaller = jaxbContext.createMarshaller();
+            StringWriter xmlWriter = new StringWriter();
+            marshaller.marshal(wrapper, xmlWriter);
+
+
+            TransformerFactory transformerFactory = TransformerFactory.newInstance();
+            StreamSource xsltSource = new StreamSource(getClass().getResourceAsStream("/cv24s.xslt"));
+
+            Transformer transformer = transformerFactory.newTransformer(xsltSource);
+            StreamSource xmlSource = new StreamSource(new StringReader(xmlWriter.toString()));
+            StringWriter htmlWriter = new StringWriter(); 
+            transformer.transform(xmlSource, new StreamResult(htmlWriter));
+
+            String htmlContent = htmlWriter.toString(); 
+            System.out.println("Transformation XML vers HTML terminée.");
+
+            return htmlContent;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     public String transformCV24ListXSLResumeHTML(TestCV testCV) {
         try {
             // Marshalliser un objet en XML

@@ -39,6 +39,18 @@ public class CV2Service {
 	private Validator validator;
     @Autowired
 	private TransformToXML transformer;
+
+    public String getAllCv24sHTML() {
+        try {
+            List<CV24type> cv24 = cvRepositorie.findAll();
+            // Transformer la liste en une liste de TestCV (si nécessaire)
+            List<TestCV> testCvList = CV24Mapper.INSTANCE.toModels(cv24);
+            return transformer.transformCV24ListXSLResumeHTMLList(testCvList);
+        } catch (NoSuchElementException e) {
+            return "errorHtml";
+        }
+    }
+    
     public String getAllCv24sXML() throws TransformerException {
         try {
             List<CV24type> testCVs = cvRepositorie.findAll();

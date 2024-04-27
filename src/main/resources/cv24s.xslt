@@ -1,48 +1,111 @@
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0" xmlns:cv24="http://univ.fr/cv24">
-<xsl:output method="html" indent="yes" omit-xml-declaration="yes" encoding="UTF-8" /> 
-  <xsl:template match="/cv24">
-    <html>
-      <head>
-        <title>CV24 - XSLT V1.0</title>
+<?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet version="1.0"
+                xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+                xmlns:cv24="http://univ.fr/cv24">
 
-          <link rel="stylesheet" type="text/css" href="style.css"/>
-      </head>
-      <body>
-        <h1>CV24 - XSLT V1.0</h1>
-        <p>Le 14 février 2024</p>
-        <h2>	
-        	<xsl:value-of select="cv24:identite/genre"/>
-        	<xsl:text> </xsl:text> 
-        	<xsl:value-of select="cv24:identite/prenom"/>
-        	<xsl:text> </xsl:text> <!-- genere un espace entre nom et prenom ? -->
-        	<xsl:value-of select="cv24:identite/nom"/>
-        </h2>
-      	<p>
-      		Tel: <xsl:value-of select="cv24:identite/tel"/>
-        	 <br/>
-        	Mel: <xsl:value-of select="cv24:identite/mel"/>
-      	</p>
+    <xsl:output method="html"/>
+
+    <xsl:template match="/">
+        <html>
+            <head>
+                <title>CV24 - Détails des CVs</title>
+                <meta charset="UTF-8"/>
+            </head>
+            <body>
+              <h1>Affiche la liste des CV</h1>
+                <div class="container">
+                    <xsl:apply-templates select="/cv24List/cv24"/>
+                </div>
+            </body>
+        </html>
+    </xsl:template>
 
 
-      </body>
-    </html>
-  </xsl:template>
+    <xsl:template match="cv24">
+        <div class="cv">
+                 <xsl:apply-templates select="cv24:identite"/>
+            <xsl:apply-templates select="cv24:objectif"/>
+            <xsl:apply-templates select="cv24:prof"/>
+            <xsl:apply-templates select="cv24:competences"/>
+            <xsl:apply-templates select="cv24:divers"/>
+        </div>
+    </xsl:template>
 
-  <xsl:template match="objectif">
-    <h2>
-		 <p><xsl:value-of select="."/></p>
-	</h2>
-
-    <p>	
-     <!-- mmettre la valeur de l'attribut statut dans une variable -->
-     <xsl:variable name="statut" select="@statut"/>
-  	 <!-- utilisation de la valeur dee l'attribut statut -->
-    Demande de <xsl:value-of select="$statut"/>
-    </p>
-
-  </xsl:template>
+    <xsl:template match="cv24:identite">
+        <div class="identite">
+            <h2>Identité</h2>
+            <p>Genre: <xsl:value-of select="cv24:genre"/></p>
+            <p>Nom: <xsl:value-of select="cv24:nom"/></p>
+            <p>Prénom: <xsl:value-of select="cv24:prenom"/></p>
+            <p>Téléphone: <xsl:value-of select="cv24:tel"/></p>
+            <p>Email: <xsl:value-of select="cv24:mel"/></p>
+        </div>
+    </xsl:template>
 
 
+    <xsl:template match="cv24:objectif">
+        <div class="objectif">
+            <h2>Objectif</h2>
+            <p>Statut: <xsl:value-of select="@statut"/></p>
+            <p>Description: <xsl:value-of select="."/></p>
+        </div>
+    </xsl:template>
 
+
+    <xsl:template match="cv24:prof">
+        <div class="prof">
+            <h2>Expérience professionnelle</h2>
+            <xsl:for-each select="cv24:detail">
+                <p>
+                    Date de début: <xsl:value-of select="cv24:datedeb"/><br/>
+                    <xsl:if test="cv24:datefin">
+                        Date de fin: <xsl:value-of select="cv24:datefin"/><br/>
+                    </xsl:if>
+                    Titre: <xsl:value-of select="cv24:titre"/>
+                </p>
+            </xsl:for-each>
+        </div>
+    </xsl:template>
+
+
+    <xsl:template match="cv24:competences">
+        <div class="competences">
+            <h2>Compétences</h2>
+            <xsl:apply-templates select="cv24:diplome"/>
+            <xsl:apply-templates select="cv24:certif"/>
+        </div>
+    </xsl:template>
+
+
+    <xsl:template match="cv24:diplome">
+        <div class="diplome">
+            <p>Niveau: <xsl:value-of select="@niveau"/></p>
+            <p>Texte: <xsl:value-of select="cv24:texte"/></p>
+            <p>Date: <xsl:value-of select="cv24:date"/></p>
+            <p>Institut: <xsl:value-of select="cv24:institut"/></p>
+        </div>
+    </xsl:template>
+
+
+    <xsl:template match="cv24:certif">
+        <div class="certif">
+            <p>Début: <xsl:value-of select="cv24:datedeb"/></p>
+            <p>Titre: <xsl:value-of select="cv24:titre"/></p>
+        </div>
+    </xsl:template>
+
+
+    <xsl:template match="cv24:divers">
+        <div class="divers">
+            <h2>Divers</h2>
+            <p>Langue: <xsl:value-of select="cv24:lv/@lang"/></p>
+            <p>Certification: <xsl:value-of select="cv24:lv/@cert"/></p>
+            <p>Niveau oral: <xsl:value-of select="cv24:lv/@nivs"/></p>
+            <p>Niveau écrit: <xsl:value-of select="cv24:lv/@nivi"/></p>
+            <xsl:if test="cv24:autre/@titre">
+                <p>Autre: <xsl:value-of select="cv24:autre/@titre"/></p>
+            </xsl:if>
+        </div>
+    </xsl:template>
 
 </xsl:stylesheet>

@@ -27,14 +27,18 @@ public class GetController {
 	private CV2Service cv24Service;
   
 
+    @RequestMapping( value="/cv24/resume", method = RequestMethod.GET)
+	@ResponseBody
+	public String resume() throws TransformerException {
+		return cv24Service.getAllCv24sHTML();
+	}
 
-
-    @RequestMapping( value="/cv24/resume/xml", method = RequestMethod.GET, 
-    produces=MediaType.APPLICATION_XML_VALUE)
-@ResponseBody
-public String resume() throws TransformerException {
-return cv24Service.getAllCv24sXML();
-}
+	@RequestMapping( value="/cv24/resume/xml", method = RequestMethod.GET, 
+			produces=MediaType.APPLICATION_XML_VALUE)
+	@ResponseBody
+	public String resumeXML() throws TransformerException {
+		return cv24Service.getAllCv24sXML();
+	}
 
 @GetMapping(value="/cv24/xml", produces = MediaType.APPLICATION_XML_VALUE)
 @ResponseBody
