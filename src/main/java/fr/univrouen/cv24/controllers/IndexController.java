@@ -9,19 +9,24 @@ import org.springframework.web.servlet.ModelAndView;
 public class IndexController {
 
     @GetMapping(value =  {"/", "/index"})
-    public String index() {
-        return "index";
-    }
-
+    public ModelAndView index() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("index");
+          return modelAndView;
+      }
     @GetMapping(value = "/help")
-    public String help() {
-        return "help";
-    }
+    public ModelAndView help() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("help");
+          return modelAndView;
+      }
  
     @GetMapping(value = "/error")
-    public String error() {
-        return "error";
-    }
+    public ModelAndView error() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("error");
+          return modelAndView;
+      }
     
     @ExceptionHandler(Exception.class)
     public ModelAndView handleException(Exception ex) {
