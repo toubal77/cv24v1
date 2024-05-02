@@ -37,18 +37,29 @@ public class CV2Service {
     public String getAllCv24sHTML() {
         try {
             List<CV24type> cv24 = cvRepositorie.findAll();
-            // Transformer la liste en une liste de TestCV (si nécessaire)
+            System.out.println("getAllCv24sHTML()");
+        if (cv24.isEmpty()) {
+            System.out.println("getAllCv24sHTML() aucun");
+            return "Il n'y a aucun CV dans la base de données pour le moment";
+        } else {
             List<TestCV> testCvList = CV24Mapper.INSTANCE.toModels(cv24);
             return transformer.transformCV24ListXSLResumeHTMLList(testCvList);
-        } catch (NoSuchElementException e) {
-            return "errorHtml";
         }
+    } catch (NoSuchElementException e) {
+        return "errorHtml";
+    }
     }
    
     public String getAllCv24sXML() throws TransformerException {
         try {
-            List<CV24type> testCVs = cvRepositorie.findAll();
-            return transformer.transformCV24ListXSLResume(   CV24Mapper.INSTANCE.toModels(testCVs));
+            List<CV24type> cv24s = cvRepositorie.findAll();
+            System.out.println("getAllCv24sXML()");
+            if (cv24s.isEmpty()) {
+                System.out.println("getAllCv24sXML() aucun");
+                return mapper.marchall(new Response( Response.Type.NONE,"Il n'y a aucun CV dans la base de données pour le moment"));
+            } else {
+                return transformer.transformCV24ListXSLResume(CV24Mapper.INSTANCE.toModels(cv24s));
+            }
         } catch (Exception e) {
             e.printStackTrace();
             return null;
@@ -72,9 +83,15 @@ public class CV2Service {
    public String findByIdHTML(Long id) {
     try {
         CV24type cv24 = cvRepositorie.findById(id).get();
+        System.out.println("findByIdHTML() " + cv24);
+        if(cv24 ==null){
+            String errorHtml = loadHtmlTemplate();
+            errorHtml = errorHtml.replace("<p id=\"error-message\"></p>", "<p id=\"error-message\"> Le CV n'a pas peut être trouver</p>");
+            return errorHtml;
+        }
         return transformer.transformCV24ListXSLResumeHTML(CV24Mapper.INSTANCE.toModel(cv24));
     } catch (NoSuchElementException e) {
-        String errorMessage = "<strong>Error:</strong> CV avec ID " + id + " non trouve";
+        String errorMessage = "<strong>Error:</strong> CV avec ID " + id;
         String errorHtml = loadHtmlTemplate();
         errorHtml = errorHtml.replace("<p id=\"error-message\"></p>", "<p id=\"error-message\">" + errorMessage + "</p>");
         return errorHtml;
