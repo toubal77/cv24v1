@@ -1,16 +1,67 @@
 <!DOCTYPE html>
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <title>Erreur</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .intro {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            left: 0;
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-	<div class="intro">
-		<h1>Oops!</h1>
-		<br/>
-		<h2>Erreur okay okay</h2>
-	</div>		
-  <footer>
-    <p>Tous droits réservés &copy; 2024</p>
-</footer>
+    <div class="intro">
+        <h1>Oops!</h1>
+        <h2>Une erreur s'est produite.</h2>
+        <p>Veuillez retourner à la <a href="/help">page d'aide</a></p>
+    </div>
+    <footer>
+        <p>Tous droits réservés &copy; 2024</p>
+    </footer>
 </body>
 </html>

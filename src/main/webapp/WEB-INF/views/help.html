@@ -21,7 +21,7 @@
   </thead>
   <tbody>
     <tr>
-      <th scope="row">/</th>
+      <th scope="row">/ ou /index</th>
       <td>GET</td>
       <td>Retourne la page d'accueil du projet</td>
     </tr>
@@ -33,46 +33,71 @@
     </tr>
 
     <tr>
-      <th scope="row">/resume</th>
-      <td>GET / POST</td>
+      <th scope="row">/cv24/resume/xml</th>
+      <td>GET</td>
       <td>Retourne une liste résumée les CV24 présentes dans la base en flux XML avec 
       les informations suivantes :
     <ul>
         <li>Identifiant de la CV24</li>
-        <li>Identifiant de la CV24</li>
-        <li>Identifiant de la CV24</li>
-        <li>Identifiant de la CV24</li>
+        <li>Identité : Genre, Prénom, Nom</li>
+        <li>Objectif avec le statut spécifié en début de ligne</li>
+        <li>Diplôme le plus élevé (ou le plus récent)</li>
     </ul>
-    </tr>
+    En cas de succès, un flux XML conforme au schéma sera retourné. En cas d'échec, un XML de retour contenant l'identifiant et le statut de l'erreur sera retourné.
+    </td></tr>
 
     <tr>
-      <th scope="row">/cv24/{id}</th>
+      <th scope="row">/cv24/resume</th>
       <td>GET</td>
-      <td>Opération Retourne le contenu complet du CV24 dont l’identifiant est {id}, 
-          Retour Flux XML conforme au schéma XSD d'une CV24.
-      </td>
+      <td>Retourne une liste résumée les CV24 présentes dans la base en flux HTML avec 
+      les informations suivantes :
+    <ul>
+      <li>Identifiant de la CV24</li>
+      <li>Identité : Genre, Prénom, Nom</li>
+      <li>Objectif avec le statut spécifié en début de ligne</li>
+      <li>Diplôme le plus élevé (ou le plus récent)</li>
+    </ul>
+    En cas de succès, le contenu sera retourné au format HTML. En cas d'erreur, un message d'erreur HTML sera affiche
+  </td>
     </tr>
 
     <tr>
-      <th scope="row">/html/cv24/{id}</th>
+      <th scope="row">/cv24/xml/{id}</th>
+      <td>GET</td>
+      <td>Opération Retourne le contenu complet du CV24 dont l’identifiant est {id} <br>
+          <br>Retour Flux XML conforme au schéma XSD d'une CV24.
+          En cas de succès, un flux XML conforme au schéma sera retourné. En cas d'échec, un XML de retour contenant l'identifiant et le statut de l'erreur sera retourné.
+        
+        </td>
+    </tr>
+
+    <tr>
+      <th scope="row">/cv24/html/{id}</th>
       <td>GET</td>
       <td>Opération Retourne le contenu complet du CV24 dont l’identifiant est {id}
             en format HTML.
+            <br> <br>
+            En cas de succès, le contenu sera retourné au format HTML. En cas d'erreur, un message d'erreur HTML sera affiche
+
       </td>
     </tr>
 
 
     <tr>
-      <th scope="row">/insert</th>
-      <td>PUT</td>
-      <td>Transmis Flux XML décrivant la CV24 à ajouter, conformément au schéma XSD.
+      <th scope="row">/cv24/insert</th>
+      <td>POST</td>
+      <td>Transmis Flux XML décrivant la CV24 à ajouter, conformément au schéma XSD.<br> <br>
+        En cas de succès, un flux XML conforme au schéma sera retourné. En cas d'échec, un XML de retour contenant l'identifiant et le statut de l'erreur sera retourné.
+    
        </td>
     </tr>
 
     <tr>
-      <th scope="row">/delete/{id}</th>
+      <th scope="row">/cv24/delete/{id}</th>
       <td>DELETE</td>
-      <td>Suppression du CV24 dont l’identifiant est {id} Retour Flux XML
+      <td>Suppression du CV24 dont l’identifiant est {id} Retour Flux XML. <br> <br>
+        En cas de succès, un flux XML conforme au schéma sera retourné. En cas d'échec, un XML de retour contenant l'identifiant et le statut de l'erreur sera retourné.
+  
        </td>
     </tr>
   </tbody>
