@@ -28,7 +28,7 @@ public class Validator {
     public static final String CV24_XSD_FILE = "/cv24.xsd";
 
     public Boolean validateCV24(TestCV cv24) {
-        SimpleErrorHandler errorHandler = new SimpleErrorHandler(); 
+     //   SimpleErrorHandler errorHandler = new SimpleErrorHandler(); 
 
         try {
             // Créer le contexte JAXB
@@ -58,8 +58,8 @@ public class Validator {
             validator.validate(new DOMSource(document));
             return true;
         } catch (JAXBException | ParserConfigurationException | SAXException | IOException e) {
-            System.out.println("ereurrrrrrrrrrrrrrrrrrrrrrrrrrrrrr");
-            System.out.println(e);
+          //  System.out.println("ereurrrrrrrrrrrrrrrrrrrrrrrrrrrrrr");
+          //  System.out.println(e);
             return false;
         } 
         

@@ -1,21 +1,15 @@
 package fr.univrouen.cv24.services;
 
 import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
-import javax.xml.transform.stream.StreamSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import fr.univrouen.cv24.Mapper.CV24Mapper;
@@ -25,8 +19,6 @@ import fr.univrouen.cv24.util.TransformToXML;
 import fr.univrouen.cv24.util.Validator;
 import jakarta.xml.bind.JAXBException;
 
-import org.w3c.dom.Document;
-import org.xml.sax.SAXException;
 @Service
 public class CV2Service {
 

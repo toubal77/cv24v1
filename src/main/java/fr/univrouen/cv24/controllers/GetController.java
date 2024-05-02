@@ -1,6 +1,5 @@
 package fr.univrouen.cv24.controllers;
 
-import java.io.InputStream;
 import java.util.NoSuchElementException;
 import javax.xml.transform.TransformerException;
 
@@ -12,12 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import fr.univrouen.cv24.model.TestCV;
 import fr.univrouen.cv24.services.CV2Service;
-import fr.univrouen.cv24.util.Fichier;
-import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
-import jakarta.xml.bind.Unmarshaller;
 
 @Controller
 public class GetController {
@@ -33,8 +28,7 @@ public class GetController {
 		return cv24Service.getAllCv24sHTML();
 	}
 
-	@RequestMapping( value="/cv24/resume/xml", method = RequestMethod.GET, 
-			produces=MediaType.APPLICATION_XML_VALUE)
+	@RequestMapping( value="/cv24/resume/xml", method = RequestMethod.GET, produces=MediaType.APPLICATION_XML_VALUE)
 	@ResponseBody
 	public String resumeXML() throws TransformerException {
 		return cv24Service.getAllCv24sXML();
@@ -52,44 +46,5 @@ public class GetController {
 		return cv24Service.findByIdHTML(id);
 	}
 
-@GetMapping("/cvid")
-public String getCVinXML(
-@RequestParam(value = "texte") String texte) {
-		return ("Détail du CV n°" + texte);
-}
-
-@GetMapping("/test")
-public String getTestinXML(
-        @RequestParam(value = "id", required = false) Integer id,
-        @RequestParam(value = "titre", required = false) String titre) {
-	String idString = (id != null) ? id.toString() : "null";
-    String titreString = (titre != null) ? titre : "null";
-    if(idString == "null" && titreString =="null") {
-    return "Page test sans parametre";
-    }else {
-    	return "Test :\n" + "id = " + id + "\n" + "titre = " + titre;
-    }
-}
-
-@GetMapping("/testfic")
-public String afficherContenuFichier() {
-    return Fichier.loadFileXML();
-}
-
-@RequestMapping(value="/testxml", produces=MediaType.APPLICATION_XML_VALUE)
-public @ResponseBody TestCV getXML() {
-    try {
-        JAXBContext context = JAXBContext.newInstance(TestCV.class);
-        Unmarshaller unmarshaller = context.createUnmarshaller();
-        InputStream inputStream = getClass().getClassLoader().getResourceAsStream("smallCV.xml");
-
-        TestCV cv = (TestCV) unmarshaller.unmarshal(inputStream);
-
-        return cv;
-    } catch (JAXBException e) {
-        e.printStackTrace();
-        return null;
-    }
-}
 
 }
