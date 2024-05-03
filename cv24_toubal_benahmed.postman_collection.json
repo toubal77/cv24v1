@@ -1,0 +1,189 @@
+{
+	"info": {
+		"_postman_id": "2f4365eb-0fb3-4a1d-a83f-213d0a16125b",
+		"name": "cv24_toubal_benahmed",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "15324785"
+	},
+	"item": [
+		{
+			"name": "insertion",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<?xml-stylesheet type=\"text/xsl\" href=\"cv24.tp3.xslt\"?>\n<cv24:cv24 xmlns:cv24=\"http://univ.fr/cv24\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xsi:schemaLocation=\"http://univ.fr/cv24 cv24.tp1.xsd \">\n  \n  <cv24:identite>\n    <cv24:genre>Mr</cv24:genre>\n    <cv24:nom>TOUBAL</cv24:nom>\n    <cv24:prenom>Zine Eddine</cv24:prenom>\n    <cv24:tel>+33 1 23 45 67 89</cv24:tel>\n    <cv24:mel>toubalzineddine77@gmail.com</cv24:mel>\n  </cv24:identite>\n  \n  <cv24:objectif statut=\"stage\">Developpeur full stack</cv24:objectif>\n  \n  <cv24:prof>\n  \n  \t<cv24:detail>\n      <cv24:datedeb>2024-01-01</cv24:datedeb>\n      <cv24:titre>Developpeur Full Stack</cv24:titre>\n    </cv24:detail>\n    \n    <cv24:detail>\n      <cv24:datedeb>2023-08-01</cv24:datedeb>\n      <cv24:datefin>2024-09-01</cv24:datefin>\n      <cv24:titre>Developpeur Full Stack</cv24:titre>\n    </cv24:detail>\n    \n    <cv24:detail>\n      <cv24:datedeb>2022-05-01</cv24:datedeb>\n      <cv24:datefin>2022-07-31</cv24:datefin>\n      <cv24:titre>benevole jeux mediterraneens </cv24:titre>\n    </cv24:detail>\n    \n    <cv24:detail>\n      <cv24:datedeb>2021-11-01</cv24:datedeb>\n      <cv24:datefin>2022-02-01</cv24:datefin>\n      <cv24:titre>Formateur institut francais</cv24:titre>\n    </cv24:detail>\n  </cv24:prof>\n  \n  <cv24:competences> \n     <cv24:diplome niveau=\"4\">\n\t\t \t<cv24:texte>Master 1 systemes d'information et de données </cv24:texte>\n      <cv24:date>2023-06-01</cv24:date>\n      <cv24:institut>Universite des sciences d'oran</cv24:institut>\n    </cv24:diplome>\n    <cv24:diplome niveau=\"3\">\n\t\t<cv24:texte>Licence en informatique systemes informatiques </cv24:texte>\n      <cv24:date>2022-06-01</cv24:date>\n      <cv24:institut>Universite des sciences d'oran</cv24:institut>\n    </cv24:diplome>\n   \n    <cv24:diplome niveau=\"5\">\n\t\t\t<cv24:texte>Master genie de l'informatique et logicielle </cv24:texte>\n      <cv24:date>2025-06-01</cv24:date>\n      <cv24:institut>Universite de Rouen Normandie</cv24:institut>\n    </cv24:diplome>\n\n    \n    <cv24:certif>\n      <cv24:datedeb>2023-04-15</cv24:datedeb>\n      <cv24:titre>Cloud Fundation</cv24:titre>\n      \n    </cv24:certif>\n    \n    <cv24:certif>\n      <cv24:datedeb>2023-04-16</cv24:datedeb>\n      <cv24:titre>Cloud Fundation 2</cv24:titre>\n      \n    </cv24:certif>\n    \n  </cv24:competences>\n  \n  <cv24:divers>\n    \n    <cv24:lv lang=\"fr\" cert=\"MAT\" nivs=\"C1\" nivi=\"580\"/>\n    <cv24:lv lang=\"en\" cert=\"TOEIC\" nivs=\"A2\"/>\n    \n    <cv24:autre comment=\"B\" titre=\"Permis\"/>\n  </cv24:divers>\n</cv24:cv24>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": "http://localhost:8080/cv24/insert"
+			},
+			"response": []
+		},
+		{
+			"name": "home page",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/"
+			},
+			"response": []
+		},
+		{
+			"name": "home page 2",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/index"
+			},
+			"response": []
+		},
+		{
+			"name": "page d'aide",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/help"
+			},
+			"response": []
+		},
+		{
+			"name": "Page d'erreur",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/error"
+			},
+			"response": []
+		},
+		{
+			"name": "suppression",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/cv24/delete?id=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cv24",
+						"delete"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "All cv HTML",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/cv24/resume"
+			},
+			"response": []
+		},
+		{
+			"name": "All cv XML",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/cv24/resume/xml"
+			},
+			"response": []
+		},
+		{
+			"name": "Get CV XML with id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/cv24/xml?id=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cv24",
+						"xml"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get CV HTML with id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/cv24/html?id=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"cv24",
+						"html"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "serveur",
+			"value": "http://localhost:8080/",
+			"type": "string"
+		}
+	]
+}
