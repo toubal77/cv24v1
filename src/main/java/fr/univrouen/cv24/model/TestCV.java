@@ -2,9 +2,12 @@ package fr.univrouen.cv24.model;
 
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlType;
+
 import java.util.List;
 
 @XmlRootElement(name = "cv24", namespace = "http://univ.fr/cv24")
+@XmlType(propOrder = {"identite", "objectif", "prof", "competences", "divers"})
 public class TestCV {
     
     private static final long serialVersionUID = 2024L;

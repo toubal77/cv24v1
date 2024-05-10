@@ -16,7 +16,7 @@ import fr.univrouen.cv24.Mapper.CV24Mapper;
 import fr.univrouen.cv24.model.*;
 import fr.univrouen.cv24.repositorie.CVRepositorie;
 import fr.univrouen.cv24.util.TransformToXML;
-import fr.univrouen.cv24.util.Validator;
+import fr.univrouen.cv24.util.Validateur;
 import jakarta.xml.bind.JAXBException;
 
 @Service
@@ -29,7 +29,7 @@ public class CV2Service {
         private CVRepositorie cvRepositorie;
  
 	@Autowired
-	private Validator validator;
+	private Validateur validator;
 
     @Autowired
 	private TransformToXML transformer;
@@ -158,20 +158,17 @@ private String loadHtmlTemplate() {
 	
         public String insert(TestCV cv24) {
      if(cv24 !=null){
-        //    Boolean response = validator.validateCV24(cv24);
-         //   if(response){
+            Boolean response = validator.validateCV24(cv24);
+           if(response){
                      if (searchCV24(cv24)) {
                         return mapper.marchall(new Response(Response.Type.DUPLICATED, "Flux déjà existant !"));
                      
                      }
                      CV24type cv =    cvRepositorie.save(CV24Mapper.INSTANCE.toEntity(cv24));
                  	return mapper.marchall(new Response(cv.getId(), Response.Type.INSERTED));
-         //           }else{
-          //              return  "<message>" + 
-           //             "xml format no valide"+				
-           //     "<status>"+ HttpStatus.CONFLICT +"</status>" + 
-           // "</message>";
-           //         }
+                    }else{
+                        return mapper.marchall(new Response(Response.Type.ERROR,"Erreur inattendue lors de la validation du schéma XML (XML non valide)"));
+                    }
             } else {
                 return mapper.marchall(new Response(Response.Type.ERROR));
             }

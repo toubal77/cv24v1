@@ -2,9 +2,12 @@ package fr.univrouen.cv24.model;
 
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlType;
+
 import java.util.List;
 
 @XmlRootElement(namespace = "http://univ.fr/cv24")
+@XmlType(propOrder = {"lv", "autre"})
 public class Divers {
     private List<Lv> lv;
     private Autre autre;

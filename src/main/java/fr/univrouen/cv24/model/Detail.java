@@ -2,8 +2,10 @@ package fr.univrouen.cv24.model;
 
 import jakarta.xml.bind.annotation.XmlElement;
 import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlType;
 
 @XmlRootElement(namespace = "http://univ.fr/cv24")
+@XmlType(propOrder = {"datedeb", "datefin", "titre"})
 public class Detail {
     private String datedeb;
     private String datefin;
