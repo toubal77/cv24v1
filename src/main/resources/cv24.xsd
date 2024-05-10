@@ -20,7 +20,6 @@ elementFormDefault="unqualified" >
 <xs:element name="competences" type="TypeCompetences" />
 <xs:element name="diplome" type="TypeDiplome" />
 
-<xs:element name="texte" type="xs:string" />
 <xs:element name="date" type="xs:date"/>
 <xs:element name="institut" type="string32"/>
 <xs:element name="certif" type="TypeCertiff" />
@@ -152,7 +151,7 @@ elementFormDefault="unqualified" >
 
 <xs:complexType name="TypeDiplome">
 	<xs:sequence>
-			<xs:element ref="texte"></xs:element>
+			<xs:element ref="titre"></xs:element>
 
   <xs:choice minOccurs="0" maxOccurs="unbounded">
     <xs:element ref="date"/>

@@ -5,7 +5,6 @@ import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlType;
 
 @XmlRootElement(namespace = "http://univ.fr/cv24")
-@XmlType(propOrder = {"datedeb", "datefin", "titre"})
 public class Detail {
     private String datedeb;
     private String datefin;

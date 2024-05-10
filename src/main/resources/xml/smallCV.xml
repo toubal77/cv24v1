@@ -40,18 +40,18 @@
   
   <cv24:competences> 
      <cv24:diplome niveau="4">
-		 	<cv24:texte>Master 1 systemes d'information et de données </cv24:texte>
+		 	<cv24:titre>Master 1 systemes d'information et de données </cv24:titre>
       <cv24:date>2023-06-01</cv24:date>
       <cv24:institut>Universite des sciences d'oran</cv24:institut>
     </cv24:diplome>
     <cv24:diplome niveau="3">
-		<cv24:texte>Licence en informatique systemes informatiques </cv24:texte>
+		<cv24:titre>Licence en informatique systemes informatiques </cv24:titre>
       <cv24:date>2022-06-01</cv24:date>
       <cv24:institut>Universite des sciences d'oran</cv24:institut>
     </cv24:diplome>
    
     <cv24:diplome niveau="5">
-			<cv24:texte>Master genie de l'informatique et logicielle </cv24:texte>
+			<cv24:titre>Master genie de l'informatique et logicielle </cv24:titre>
       <cv24:date>2025-06-01</cv24:date>
       <cv24:institut>Universite de Rouen Normandie</cv24:institut>
     </cv24:diplome>

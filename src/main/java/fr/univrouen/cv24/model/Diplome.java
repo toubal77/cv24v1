@@ -6,9 +6,9 @@ import jakarta.xml.bind.annotation.XmlRootElement;
 import jakarta.xml.bind.annotation.XmlType;
 
 @XmlRootElement(namespace = "http://univ.fr/cv24")
-@XmlType(propOrder = {"texte", "date", "institut"})
+@XmlType(propOrder = {"titre", "date", "institut"})
 public class Diplome {
-    private String texte;
+    private String titre;
     private String date;
     private String institut;
     private String niveau;
@@ -22,13 +22,13 @@ public class Diplome {
         this.niveau = value;
     }
 
-    @XmlElement(name = "texte", namespace = "http://univ.fr/cv24")
-    public String getTexte() {
-        return texte;
+    @XmlElement(name = "titre", namespace = "http://univ.fr/cv24")
+    public String gettitre() {
+        return titre;
     }
 
-    public void setTexte(String texte) {
-        this.texte = texte;
+    public void settitre(String titre) {
+        this.titre = titre;
     }
 
     @XmlElement(name = "date", namespace = "http://univ.fr/cv24")

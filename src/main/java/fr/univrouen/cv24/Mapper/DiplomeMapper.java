@@ -16,7 +16,7 @@ public abstract class DiplomeMapper {
         Diplome diplome = new Diplome();
         diplome.setInstitut(diplomeEntity.getInstitutDiplome());
         diplome.setDate(diplomeEntity.getDiplomeDate());
-        diplome.setTexte(diplomeEntity.getTitreDiplome());
+        diplome.settitre(diplomeEntity.getTitreDiplome());
         diplome.setNiveau(diplomeEntity.getDiplomeNiveau());
         return diplome;
     }
@@ -26,7 +26,7 @@ public abstract class DiplomeMapper {
         diplomeEntity.setDiplomeDate(diplome.getDate());
         diplomeEntity.setDiplomeNiveau(diplome.getNiveau());
         diplomeEntity.setInstitutDiplome(diplome.getInstitut());
-        diplomeEntity.setTitreDiplome(diplome.getTexte());
+        diplomeEntity.setTitreDiplome(diplome.gettitre());
         return diplomeEntity;
     }
     public abstract List<Diplome> toModels(List<DiplomeType> diplomeEntities);

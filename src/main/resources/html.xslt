@@ -74,7 +74,7 @@
     <xsl:template match="cv24:diplome">
         <div class="diplome">
             <p>Niveau: <xsl:value-of select="@niveau"/></p>
-            <p>Texte: <xsl:value-of select="cv24:texte"/></p>
+            <p>Titre: <xsl:value-of select="cv24:titre"/></p>
             <p>Date: <xsl:value-of select="cv24:date"/></p>
             <p>Institut: <xsl:value-of select="cv24:institut"/></p>
         </div>
@@ -83,6 +83,7 @@
     <xsl:template match="cv24:certif">
         <div class="certif">
             <p>Début: <xsl:value-of select="cv24:datedeb"/></p>
+            <p>Fin: <xsl:value-of select="cv24:datefin"/></p>
             <p>Titre: <xsl:value-of select="cv24:titre"/></p>
         </div>
     </xsl:template>
