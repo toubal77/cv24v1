@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import fr.univrouen.cv24.services.CV2Service;
 import jakarta.xml.bind.JAXBException;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class GetController {
@@ -20,7 +21,25 @@ public class GetController {
     	@Autowired
 	private CV2Service cv24Service;
 
-
+	@GetMapping(value =  {"/", "/index"})
+    public ModelAndView index() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("index");
+          return modelAndView;
+      }
+    @GetMapping(value = "/help")
+    public ModelAndView help() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("help");
+          return modelAndView;
+      }
+ 
+    @GetMapping(value = "/error")
+    public ModelAndView error() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("error");
+          return modelAndView;
+      }
 
     @RequestMapping( value="/cv24/resume", method = RequestMethod.GET)
 	@ResponseBody

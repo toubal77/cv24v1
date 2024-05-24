@@ -10,7 +10,7 @@ import javax.xml.validation.SchemaFactory;
 import org.springframework.stereotype.Component;
 import org.xml.sax.SAXException;
 
-import fr.univrouen.cv24.model.TestCV;
+import fr.univrouen.cv24.model.CV24;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Marshaller;
@@ -22,9 +22,9 @@ public class Validateur {
     public static final String SCHEMA_LANGUAGE = "http://www.w3.org/2001/XMLSchema";
     public static final String CV24_XSD_FILE = "/cv24.xsd";
 
-      public Boolean validateCV24(TestCV cv24) {
+      public Boolean validateCV24(CV24 cv24) {
         try {
-            JAXBContext jaxbContext = JAXBContext.newInstance(TestCV.class);
+            JAXBContext jaxbContext = JAXBContext.newInstance(CV24.class);
             Marshaller marshaller = jaxbContext.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 
@@ -41,7 +41,7 @@ public class Validateur {
            // System.out.println( "valide tropppppppppppppp biennnnnnnnnnnnnnnn");
             return true; 
         } catch (JAXBException | SAXException | IOException e) {
-            System.out.println( "Erreur inattendue lors de la validation du schéma XML");
+       //     System.out.println( "Erreur inattendue lors de la validation du schéma XML");
                 return false;
         
         }

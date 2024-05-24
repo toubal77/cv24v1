@@ -13,6 +13,9 @@ public abstract class CertifsMapper {
     public static final  CertifsMapper INSTANCE = Mappers.getMapper(CertifsMapper.class);
         
     public Certif toModel(CertifType certifEntity) {
+        if(certifEntity == null){
+            return null;
+        }
         Certif certif = new Certif();
         certif.setDate(certifEntity.getCertifDatedeb());
         certif.setDateFin(certifEntity.getCertifDatefin());
@@ -21,6 +24,9 @@ public abstract class CertifsMapper {
     }
 
     public CertifType toEntity(Certif certif) {
+        if(certif == null){
+            return null;
+        }
         CertifType certifEntity = new CertifType();
         certifEntity.setCertifDatedeb(certif.getDate());
         certifEntity.setCertifDatefin(certif.getDateFin());
