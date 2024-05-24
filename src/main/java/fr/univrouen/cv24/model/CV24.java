@@ -1,72 +1,77 @@
 package fr.univrouen.cv24.model;
 
+import jakarta.xml.bind.annotation.XmlElement;
+import jakarta.xml.bind.annotation.XmlRootElement;
+import jakarta.xml.bind.annotation.XmlType;
 
-import jakarta.xml.bind.annotation.XmlAccessorType;
-import jakarta.xml.bind.annotation.*;
+import java.util.List;
 
-@XmlRootElement(name="cv24", namespace = "http://univ.fr/cv24")
-@XmlAccessorType(XmlAccessType.FIELD)
+@XmlRootElement(name = "cv24", namespace = "http://univ.fr/cv24")
+@XmlType(propOrder = {"identite", "objectif", "prof", "competences", "divers"})
 public class CV24 {
+    
+    private static final long serialVersionUID = 2024L;
+    private static int compteur = 1;
 
-    @XmlElement(name="identite")
+    private Integer id;
     private Identite identite;
-
-    @XmlElement(name="objectif")
     private Objectif objectif;
-
-    @XmlElement(name="prof")
     private Prof prof;
-
-    @XmlElement(name="comptences")
     private Competences competences;
-
-    @XmlElement(name="divers")
     private Divers divers;
 
+    @XmlElement(name = "identite", namespace = "http://univ.fr/cv24")
     public Identite getIdentite() {
         return identite;
     }
 
-    public void setIdentite(Identite value) {
-        this.identite = value;
+    public void setIdentite(Identite identite) {
+        this.identite = identite;
     }
 
-
+    @XmlElement(name = "objectif", namespace = "http://univ.fr/cv24")
     public Objectif getObjectif() {
         return objectif;
     }
 
-
-    public void setObjectif(Objectif value) {
-        this.objectif = value;
+    public void setObjectif(Objectif objectif) {
+        this.objectif = objectif;
     }
-
-
+    
+    @XmlElement(name = "prof", namespace = "http://univ.fr/cv24")
     public Prof getProf() {
         return prof;
     }
 
-
-    public void setProf(Prof value) {
-        this.prof = value;
+    public void setProf(Prof objectif) {
+        this.prof = objectif;
     }
 
+    @XmlElement(name = "competences", namespace = "http://univ.fr/cv24")
     public Competences getCompetences() {
         return competences;
     }
 
-
-    public void setCompetences(Competences value) {
-        this.competences = value;
+    public void setCompetences(Competences competences) {
+        this.competences = competences;
     }
 
+    @XmlElement(name = "divers", namespace = "http://univ.fr/cv24")
     public Divers getDivers() {
         return divers;
     }
 
-    public void setDivers(Divers value) {
-        this.divers = value;
+    public void setDivers(Divers divers) {
+        this.divers = divers;
     }
 
-}
 
+    public CV24() {
+    }
+
+    public CV24(List<CV24> models) {
+
+    }
+
+
+}

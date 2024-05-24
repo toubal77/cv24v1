@@ -12,24 +12,24 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class CV24s {
 
 	@XmlElement(name="cv24")
-	private List<TestCV> values;
+	private List<CV24> values;
 
 	public CV24s() {}
 
 
 
-	public CV24s(List<TestCV> values) {
+	public CV24s(List<CV24> values) {
 		super();
 		this.values = values;
 	}
 
 
 
-	public List<TestCV> getValues() {
+	public List<CV24> getValues() {
 		return values;
 	}
 
-	public void setValues(List<TestCV> values) {
+	public void setValues(List<CV24> values) {
 		this.values = values;
 	}
 

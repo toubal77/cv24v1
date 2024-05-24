@@ -11,7 +11,7 @@ import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 
 import org.springframework.stereotype.Component;
-import fr.univrouen.cv24.model.TestCV;
+import fr.univrouen.cv24.model.CV24;
 import jakarta.xml.bind.JAXBContext;
 import jakarta.xml.bind.JAXBException;
 import jakarta.xml.bind.Marshaller;
@@ -19,7 +19,7 @@ import jakarta.xml.bind.Marshaller;
 public class TransformToXML {
 	
 
-    public String transformCV24ListXSLResume(List<TestCV> list) throws TransformerException {
+    public String transformCV24ListXSLResume(List<CV24> list) throws TransformerException {
         try {
          //   System.out.println("lllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll");
             System.out.println(list);
@@ -29,9 +29,9 @@ public class TransformToXML {
     
             // Encapsulate the list in a wrapper object
             CV24ListWrapper wrapper = new CV24ListWrapper();
-            wrapper.setTestCVs(list);
+            wrapper.setCV24s(list);
           //  System.out.println("gggggggggggggggggggggggggggggggggggggggggggggggggg");
-            System.out.println(wrapper.getTestCVs());
+         //   System.out.println(wrapper.getCV24s());
             // Marshall the wrapper object
             StringWriter writer = new StringWriter();
             marshaller.marshal(wrapper, writer);
@@ -43,10 +43,10 @@ public class TransformToXML {
         }
     }
     
-	public String transformCV24ListXSLResumeXML(TestCV cv24s) throws TransformerException, JAXBException {
+	public String transformCV24ListXSLResumeXML(CV24 cv24s) throws TransformerException, JAXBException {
         try {
 
-            JAXBContext jaxbContext = JAXBContext.newInstance(TestCV.class);
+            JAXBContext jaxbContext = JAXBContext.newInstance(CV24.class);
             Marshaller marshaller = jaxbContext.createMarshaller();
 
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
@@ -65,7 +65,7 @@ public class TransformToXML {
     }
 
 
-    public String transformCV24ListXSLResumeHTMLList(List<TestCV> list) {
+    public String transformCV24ListXSLResumeHTMLList(List<CV24> list) {
         try {
           
             Cv24sListWrapper wrapper = new Cv24sListWrapper();
@@ -87,7 +87,7 @@ public class TransformToXML {
             transformer.transform(xmlSource, new StreamResult(htmlWriter));
             
             String htmlContent = htmlWriter.toString(); 
-            System.out.println("Transformation XML vers HTML terminée.");
+         //   System.out.println("Transformation XML vers HTML terminée.");
             
             return htmlContent;
         } catch (Exception e) {
@@ -96,14 +96,14 @@ public class TransformToXML {
         }
     }
 
-    public String transformCV24ListXSLResumeHTML(TestCV testCV) {
+    public String transformCV24ListXSLResumeHTML(CV24 CV24) {
         try {
             // Marshalliser un objet en XML
-            JAXBContext jaxbContext = JAXBContext.newInstance(TestCV.class);
+            JAXBContext jaxbContext = JAXBContext.newInstance(CV24.class);
             Marshaller marshaller = jaxbContext.createMarshaller();
     
             StringWriter xmlWriter = new StringWriter();
-            marshaller.marshal(testCV, xmlWriter);
+            marshaller.marshal(CV24, xmlWriter);
     
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             StreamSource xsltSource = new StreamSource(getClass().getResourceAsStream("/html.xslt"));
@@ -116,7 +116,7 @@ public class TransformToXML {
             transformer.transform(xmlSource, new StreamResult(htmlWriter));
            
             String htmlContent = htmlWriter.toString(); 
-            System.out.println("Transformation XML vers HTML terminée.");
+         //   System.out.println("Transformation XML vers HTML terminée.");
             
             return htmlContent;
         } catch (Exception e) {

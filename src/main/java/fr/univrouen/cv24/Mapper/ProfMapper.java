@@ -13,21 +13,27 @@ public  abstract class  ProfMapper {
 
         public static final  ProfMapper INSTANCE = Mappers.getMapper(ProfMapper.class);
     
-        public Prof toModel(ProfType personEntity) {
-    Prof prof = new Prof();
-    prof.setDetails(DetailMapper.INSTANCE.toModels(personEntity.getDetail()));
+        public Prof toModel(ProfType profEntity) {
+            if(profEntity ==null){
+                return null;
+            }
+            Prof prof = new Prof();
+    prof.setDetails(DetailMapper.INSTANCE.toModels(profEntity.getDetail()));
     return prof;
 }
 
     
-public ProfType toEntity(Prof person) {
-    ProfType personEntity = new ProfType();
-    personEntity.setDetail(DetailMapper.INSTANCE.toEntities(person.getDetails()));
-    return personEntity;
+public ProfType toEntity(Prof prof) {
+    if(prof == null){
+        return null;
+    }
+    ProfType profEntity = new ProfType();
+    profEntity.setDetail(DetailMapper.INSTANCE.toEntities(prof.getDetails()));
+    return profEntity;
 }
 
-        public abstract List<Prof> toModels(List<ProfType> personEntities);
-        public abstract List<ProfType> toEntities(List<Prof> persons);
+        public abstract List<Prof> toModels(List<ProfType> profEntities);
+        public abstract List<ProfType> toEntities(List<Prof> profs);
         
     }
     

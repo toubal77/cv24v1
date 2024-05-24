@@ -18,6 +18,9 @@ public abstract class DiversMapper {
             public static final  DiversMapper INSTANCE = Mappers.getMapper(DiversMapper.class);
         
             public Divers toModel(DiversType diversEntity) {
+                if(diversEntity == null){
+                    return null;
+                }
             Divers divers = new Divers();
     List<Lv> lvList = new ArrayList<>();
     for (LvType lvType : diversEntity.getLanguesDivers()) {
@@ -31,6 +34,9 @@ public abstract class DiversMapper {
 
         
             public DiversType toEntity(Divers divers) {
+                if(divers == null){
+                    return null;
+                }
                 DiversType diversEntity = new DiversType();
                 diversEntity.setAutresDivers(AutreMapper.INSTANCE.toEntity(divers.getAutre()));
                 diversEntity.setLanguesDivers(LvMapper.INSTANCE.toEntities(divers.getLv()));

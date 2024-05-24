@@ -12,16 +12,16 @@ import org.springframework.stereotype.Service;
 import fr.univrouen.cv24.model.CV24s;
 import fr.univrouen.cv24.model.CV24type;
 import fr.univrouen.cv24.model.Response;
-import fr.univrouen.cv24.model.TestCV;
+import fr.univrouen.cv24.model.CV24;
 
 
 
 @Service
 public class JaxService {
 	
-	public String marchall(TestCV cv24) {
+	public String marchall(CV24 cv24) {
 		try {
-			JAXBContext jaxbContext = JAXBContext.newInstance(TestCV.class);
+			JAXBContext jaxbContext = JAXBContext.newInstance(CV24.class);
 			Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
 			StringWriter sw = new StringWriter();
 			jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);

@@ -5,7 +5,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import jakarta.xml.bind.annotation.XmlRootElement;
@@ -33,9 +32,6 @@ public class CV24type {
 
     @OneToOne(cascade = CascadeType.ALL)
     private DiversType divers;
-
-    @ManyToOne
-	private ListCV24 cv24s;
 
     public IdentiteType getIdentite() {
         return identite;
